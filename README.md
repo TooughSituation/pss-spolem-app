@@ -7,7 +7,8 @@ Mobilna aplikacja webowa (PWA, mobile-first) dla klientów sieci sklepów **PSS 
 ## Live i repo
 
 - GitHub: [TooughSituation/pss-spolem-app](https://github.com/TooughSituation/pss-spolem-app)
-- Preview: po deployu na Vercel (gałąź `main`)
+- Live preview: [pss-spolem-app-toough-situation.vercel.app](https://pss-spolem-app-toough-situation.vercel.app)
+- Vercel: automatyczny deploy z gałęzi `main`
 
 ## Stack
 
