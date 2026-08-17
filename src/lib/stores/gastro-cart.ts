@@ -3,8 +3,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { dishUnitPrice, getDish } from "@/lib/data/dishes";
+import { seedGastroOrders } from "@/lib/data/gastro-orders";
+import { useUser } from "@/lib/stores/user";
 import type {
-  DeliveryAddress,
   GastroCartItem,
   GastroOrder,
   GastroOrderStatus,
@@ -29,24 +30,8 @@ export function deriveGastroStatus(createdAt: string): GastroOrderStatus {
   return "przyjete";
 }
 
-const defaultAddresses: DeliveryAddress[] = [
-  {
-    id: "dom",
-    label: "Dom",
-    street: "ul. Lipowa 12/4",
-    city: "Białystok",
-  },
-  {
-    id: "praca",
-    label: "Praca",
-    street: "ul. Sienkiewicza 49",
-    city: "Białystok",
-  },
-];
-
 type GastroCartState = {
   items: GastroCartItem[];
-  addresses: DeliveryAddress[];
   addressId: string;
   slot: string;
   payment: GastroPayment;
@@ -57,7 +42,6 @@ type GastroCartState = {
   remove: (lineId: string) => void;
   clear: () => void;
   setAddress: (id: string) => void;
-  addAddress: (address: Omit<DeliveryAddress, "id">) => string;
   setSlot: (slot: string) => void;
   setPayment: (payment: GastroPayment) => void;
   setSheetOpen: (open: boolean) => void;
@@ -68,11 +52,10 @@ export const useGastroCart = create<GastroCartState>()(
   persist(
     (set, get) => ({
       items: [],
-      addresses: defaultAddresses,
       addressId: "dom",
       slot: "12:00–12:30",
       payment: "przy-odbiorze",
-      orders: [],
+      orders: seedGastroOrders,
       sheetOpen: false,
       add: (dishId, addonIds, notes, qty = 1) => {
         const dish = getDish(dishId);
@@ -121,21 +104,17 @@ export const useGastroCart = create<GastroCartState>()(
         set({ items: get().items.filter((item) => item.lineId !== lineId) }),
       clear: () => set({ items: [] }),
       setAddress: (addressId) => set({ addressId }),
-      addAddress: (address) => {
-        const id = uid();
-        set({
-          addresses: [...get().addresses, { ...address, id }],
-          addressId: id,
-        });
-        return id;
-      },
       setSlot: (slot) => set({ slot }),
       setPayment: (payment) => set({ payment }),
       setSheetOpen: (sheetOpen) => set({ sheetOpen }),
       placeOrder: () => {
-        const { items, addresses, addressId, slot, payment, orders } = get();
+        const { items, addressId, slot, payment, orders } = get();
         if (!items.length) return null;
-        const address = addresses.find((item) => item.id === addressId);
+        const addresses = useUser.getState().addresses;
+        const address =
+          addresses.find((item) => item.id === addressId) ??
+          addresses.find((item) => item.isDefault) ??
+          addresses[0];
         if (!address) return null;
         const total = items.reduce((sum, item) => sum + item.unitPrice * item.qty, 0);
         const now = new Date();
@@ -152,7 +131,7 @@ export const useGastroCart = create<GastroCartState>()(
           items,
           total,
           addressId: address.id,
-          addressLabel: `${address.label}, ${address.street}, ${address.city}`,
+          addressLabel: `${address.label}, ${address.street}, ${address.postalCode} ${address.city}`,
           slot,
           payment,
         };
@@ -162,9 +141,22 @@ export const useGastroCart = create<GastroCartState>()(
     }),
     {
       name: "pss-gastro-cart",
+      version: 2,
+      migrate: (persisted) => {
+        const state = persisted as Partial<GastroCartState>;
+        return {
+          items: state.items ?? [],
+          addressId: state.addressId ?? "dom",
+          slot: state.slot ?? "12:00–12:30",
+          payment: state.payment ?? "przy-odbiorze",
+          orders:
+            state.orders && state.orders.length > 0
+              ? state.orders
+              : seedGastroOrders,
+        };
+      },
       partialize: (state) => ({
         items: state.items,
-        addresses: state.addresses,
         addressId: state.addressId,
         slot: state.slot,
         payment: state.payment,

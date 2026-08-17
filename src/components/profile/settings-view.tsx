@@ -15,18 +15,24 @@ export function SettingsView() {
   const user = useAuth((s) => s.user);
   const updateProfile = useAuth((s) => s.updateProfile);
   const [name, setName] = useState(user?.name ?? "");
+  const [phone, setPhone] = useState(user?.phone ?? "");
   const [error, setError] = useState("");
 
   if (!user) return null;
 
   const onSave = (event: FormEvent) => {
     event.preventDefault();
-    const next = name.trim();
-    if (next.length < 2) {
+    const nextName = name.trim();
+    const nextPhone = phone.trim();
+    if (nextName.length < 2) {
       setError("Podaj imię (minimum 2 znaki).");
       return;
     }
-    updateProfile({ name: next });
+    if (nextPhone.replace(/\D/g, "").length < 9) {
+      setError("Podaj numer telefonu.");
+      return;
+    }
+    updateProfile({ name: nextName, phone: nextPhone });
     toast.success("Zapisano dane");
     router.push("/profil");
   };
@@ -51,9 +57,12 @@ export function SettingsView() {
             <AppInput
               id="phone"
               label="Telefon"
-              value={user.phone}
-              disabled
-              hint="Numer telefonu zmienisz przy kolejnym logowaniu."
+              type="tel"
+              value={phone}
+              onChange={(e) => {
+                setPhone(e.target.value);
+                if (error) setError("");
+              }}
             />
             <AppInput
               id="card"

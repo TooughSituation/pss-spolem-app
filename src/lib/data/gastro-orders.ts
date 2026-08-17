@@ -1,0 +1,83 @@
+import type { GastroOrder } from "@/lib/types";
+
+export const seedGastroOrders: GastroOrder[] = [
+  {
+    id: "GS-2603",
+    createdAt: "2026-08-16T11:40:00",
+    eta: "2026-08-16T12:30:00",
+    status: "dostarczone",
+    items: [
+      {
+        lineId: "seed-1",
+        dishId: "schabowy",
+        qty: 1,
+        addonIds: ["sos-czosnek"],
+        notes: "",
+        unitPrice: 28.9,
+      },
+      {
+        lineId: "seed-2",
+        dishId: "kompot",
+        qty: 1,
+        addonIds: [],
+        notes: "",
+        unitPrice: 4.5,
+      },
+    ],
+    total: 33.4,
+    addressId: "dom",
+    addressLabel: "Dom, ul. Lipowa 12/4, Białystok",
+    slot: "12:00–12:30",
+    payment: "przy-odbiorze",
+  },
+  {
+    id: "GS-2602",
+    createdAt: "2026-08-12T16:05:00",
+    eta: "2026-08-12T16:30:00",
+    status: "dostarczone",
+    items: [
+      {
+        lineId: "seed-3",
+        dishId: "zestaw-dnia",
+        qty: 2,
+        addonIds: ["rozmiar-std"],
+        notes: "jedno bez cebuli",
+        unitPrice: 32,
+      },
+    ],
+    total: 64,
+    addressId: "praca",
+    addressLabel: "Praca, ul. Sienkiewicza 49, Białystok",
+    slot: "16:00–16:30",
+    payment: "blik",
+  },
+  {
+    id: "GS-2601",
+    createdAt: "2026-08-08T12:10:00",
+    eta: "2026-08-08T13:00:00",
+    status: "dostarczone",
+    items: [
+      {
+        lineId: "seed-4",
+        dishId: "zurek",
+        qty: 1,
+        addonIds: ["rozmiar-std"],
+        notes: "",
+        unitPrice: 16.9,
+      },
+      {
+        lineId: "seed-5",
+        dishId: "nalesniki-ser",
+        qty: 1,
+        addonIds: [],
+        notes: "",
+        unitPrice: 14.5,
+      },
+    ],
+    total: 31.4,
+    addressId: "dom",
+    addressLabel: "Dom, ul. Lipowa 12/4, Białystok",
+    slot: "12:30–13:00",
+    payment: "karta",
+  },
+];

@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty + Home + Promocje + Sklepy + Gastronomia + **Lojalność A1** (QR, historia, e-bony). Nadal sam frontend + Zustand/localStorage.
+> **Status:** fundamenty + Home + Promocje + Sklepy + Gastronomia + Lojalność A1 + **Profil A2**. Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -83,8 +83,8 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 | Gazetka | `/promocje/gazetka` | ✅ fullscreen |
 | Gastronomia | `/gastronomia` | ✅ kategorie, dania dnia, koszyk, checkout, status |
 | Sklepy | `/sklepy` | ✅ Leaflet/OSM, 10 placówek Białystok, filtry, lista, szczegóły |
-| Profil | `/profil` | ✅ dane, punkty, edycja, wylogowanie |
-| Ustawienia | `/ustawienia` | ✅ prosta edycja imienia |
+| Profil | `/profil` | ✅ dane, CRUD adresów, historia zamówień, ustawienia, usuń konto |
+| Ustawienia | `/ustawienia` | ✅ edycja imienia i telefonu |
 | Lojalność | `/lojalnosc` | ✅ karta + QR 160px, historia, wymiana, e-bony |
 | Oferta / produkt stary | `/oferta`, `/oferta/[id]` | ✅ zostaje |
 | Lista | `/lista` | ✅ istnieje, **nie ma w tabach** |
@@ -129,16 +129,16 @@ Build lokalny (`npm run build`) przechodzi.
 
 ## Co jest gotowe / co dalej
 
-**Zrobione:** DS, Auth, Home, Promocje, Sklepy, Gastronomia, **Lojalność A1**.
+**Zrobione:** DS, Auth, Home, Promocje, Sklepy, Gastronomia, Lojalność A1, **Profil A2**.
 
-**Lojalność (`/lojalnosc`):** punkty i numer karty z `pss-auth` (ten sam stan co Home). Historia + e-bony w `pss-loyalty`. 8 nagród, 12 transakcji seed, 3 e-bony startowe. Wymiana odejmuje punkty i dodaje kod.
+**Profil:** edycja imienia/telefonu, CRUD adresów (`pss-user.addresses`, współdzielone z checkout), historia zamówień gastro (`/zamowienie/[id]`), powiadomienia lokalne, wylogowanie i usunięcie konta (czyści localStorage).
 
-**Następny krok (Etap A2):** pełny Profil.
+**Następny krok:** dopracowania (prawdziwe API, płatności, geo) albo polerowanie UX.
 
 Dalsze etapy (później):
 
-- [ ] Profil A2
 - [ ] Prawdziwe płatności / status realtime
+- [ ] Backend + SMS
 - [ ] Prawdziwe API + SMS
 - [ ] Integracja „Społem znaczy razem”
 - [ ] Prawdziwa geolokalizacja
@@ -154,7 +154,7 @@ Dalsze etapy (później):
 5. **Design:** mobile-first, ramka telefonu, paleta `#0055A4`, Inter, light only
 6. **Deploy:** `git push origin main` (Vercel podpięty)
 7. **Język:** polski
-8. **Kolejny krok:** Profil A2
+8. **Kolejny krok:** backend / płatności albo szlif UX
 
 ### Wklejka kontekstowa (krótka)
 
@@ -183,8 +183,9 @@ Ekrany: /login /otp / /promocje /gastronomia /danie/[id] /checkout /zamowienie/[
 Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
 Sklepy v2: Leaflet/OSM, 10 placówek Białystok
 Gastronomia: 8 kat. / 24 dania, pss-gastro-cart, /danie /checkout /zamowienie
-Lojalność A1: pss-auth.pointsBalance + pss-loyalty (8 nagród, 12 tx, e-bony)
-Brak backendu. KOLEJNY KROK: Profil A2.
+Lojalność A1: pss-auth.pointsBalance + pss-loyalty
+Profil A2: CRUD adresów (pss-user), historia zamówień, usuń konto
+Brak backendu. KOLEJNY KROK: backend / płatności albo szlif UX.
 ```
 
 ## Kontekst developera

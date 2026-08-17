@@ -244,6 +244,8 @@ export type DeliveryAddress = {
   label: string;
   street: string;
   city: string;
+  postalCode: string;
+  isDefault: boolean;
 };
 
 export type GastroPayment = "blik" | "karta" | "przy-odbiorze";

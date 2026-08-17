@@ -15,6 +15,7 @@ import {
   gastroTotal,
   useGastroCart,
 } from "@/lib/stores/gastro-cart";
+import { useUser } from "@/lib/stores/user";
 import type { GastroPayment } from "@/lib/types";
 import { ShoppingBag } from "lucide-react";
 
@@ -27,17 +28,18 @@ const payments: { id: GastroPayment; label: string; hint: string }[] = [
 export function CheckoutForm() {
   const router = useRouter();
   const items = useGastroCart((s) => s.items);
-  const addresses = useGastroCart((s) => s.addresses);
+  const addresses = useUser((s) => s.addresses);
+  const addUserAddress = useUser((s) => s.addAddress);
   const addressId = useGastroCart((s) => s.addressId);
   const slot = useGastroCart((s) => s.slot);
   const payment = useGastroCart((s) => s.payment);
   const setAddress = useGastroCart((s) => s.setAddress);
-  const addAddress = useGastroCart((s) => s.addAddress);
   const setSlot = useGastroCart((s) => s.setSlot);
   const setPayment = useGastroCart((s) => s.setPayment);
   const placeOrder = useGastroCart((s) => s.placeOrder);
   const [label, setLabel] = useState("");
   const [street, setStreet] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [adding, setAdding] = useState(false);
   const total = gastroTotal(items);
 
@@ -109,6 +111,7 @@ export function CheckoutForm() {
         {addresses.find((a) => a.id === addressId) ? (
           <p className="mt-2 text-sm text-text-secondary">
             {addresses.find((a) => a.id === addressId)?.street},{" "}
+            {addresses.find((a) => a.id === addressId)?.postalCode}{" "}
             {addresses.find((a) => a.id === addressId)?.city}
           </p>
         ) : null}
@@ -126,20 +129,34 @@ export function CheckoutForm() {
               onChange={(e) => setStreet(e.target.value)}
               placeholder="ul. Lipowa 1"
             />
+            <AppInput
+              label="Kod pocztowy"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              placeholder="15-001"
+            />
             <AppButton
               variant="secondary"
               onClick={() => {
-                if (label.trim().length < 2 || street.trim().length < 3) {
-                  toast.error("Uzupełnij nazwę i ulicę");
+                if (
+                  label.trim().length < 2 ||
+                  street.trim().length < 3 ||
+                  !/^\d{2}-\d{3}$/.test(postalCode.trim())
+                ) {
+                  toast.error("Uzupełnij nazwę, ulicę i kod 15-001");
                   return;
                 }
-                addAddress({
+                const id = addUserAddress({
                   label: label.trim(),
                   street: street.trim(),
+                  postalCode: postalCode.trim(),
                   city: "Białystok",
+                  isDefault: false,
                 });
+                setAddress(id);
                 setLabel("");
                 setStreet("");
+                setPostalCode("");
                 setAdding(false);
                 toast.success("Dodano adres");
               }}
