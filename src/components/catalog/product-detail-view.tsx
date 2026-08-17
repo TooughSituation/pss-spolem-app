@@ -38,7 +38,7 @@ export function ProductDetailView({ product }: { product: Product }) {
           {product.isOwnBrand && (
             <Badge className="bg-primary">Marka własna PSS</Badge>
           )}
-          {product.isPromo && <Badge className="bg-coop-red text-white">Promocja</Badge>}
+          {product.isPromo && <Badge className="bg-error text-white">Promocja</Badge>}
         </div>
       </div>
 

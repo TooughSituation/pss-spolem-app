@@ -5,8 +5,8 @@ export const defaultProfile: UserProfile = {
   lastName: "Kowalska",
   email: "anna.kowalska@email.pl",
   phone: "+48 512 345 678",
-  cardNumber: "5901234567890123",
-  points: 1840,
+  cardNumber: "1234567890",
+  points: 1250,
   memberSince: "2019-03-12",
   favoriteStoreId: "mokotow",
   notifications: {

@@ -25,7 +25,7 @@ export function FlyerView() {
   };
 
   return (
-    <div className="flex min-h-dvh flex-col bg-emerald-950 text-white">
+    <div className="flex min-h-dvh flex-col bg-primary-dark text-white">
       <header className="flex items-center gap-2 px-3 pb-2 pt-[max(0.75rem,env(safe-area-inset-top))]">
         <Button
           asChild
@@ -68,7 +68,7 @@ export function FlyerView() {
                   sizes="430px"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/40 to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/40 to-black/10" />
                 <div className="relative p-6">
                   <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-200">
                     Promocje tygodnia

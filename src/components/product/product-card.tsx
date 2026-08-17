@@ -85,7 +85,7 @@ export function ProductCard({
         />
         <div className="absolute left-2 top-2 flex flex-col gap-1">
           {product.isPromo && product.oldPrice && (
-            <Badge className="bg-coop-red text-white">
+            <Badge className="bg-error text-white">
               −{Math.round((1 - product.price / product.oldPrice) * 100)}%
             </Badge>
           )}
@@ -121,7 +121,7 @@ function Price({ product }: { product: Product }) {
       <p
         className={cn(
           "text-sm font-extrabold tabular-nums",
-          product.isPromo && "text-coop-red",
+          product.isPromo && "text-error",
         )}
       >
         {formatPrice(product.price)}

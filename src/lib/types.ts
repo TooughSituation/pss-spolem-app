@@ -122,6 +122,14 @@ export type Reward = {
   description: string;
 };
 
+export type AuthUser = {
+  id: string;
+  phone: string;
+  name: string;
+  loyaltyCardNumber: string;
+  pointsBalance: number;
+};
+
 export type UserProfile = {
   firstName: string;
   lastName: string;

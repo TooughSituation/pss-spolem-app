@@ -27,14 +27,14 @@ export const categories: Category[] = [
     name: "Warzywa i owoce",
     description: "Sezonowo i lokalnie",
     emoji: "🍎",
-    tint: "from-lime-100 to-green-50",
+    tint: "from-sky-100 to-blue-50",
   },
   {
     id: "wlasne",
     name: "Produkty własne PSS",
     description: "Marka spółdzielcza",
     emoji: "🌿",
-    tint: "from-emerald-100 to-green-50",
+    tint: "from-blue-100 to-sky-50",
   },
   {
     id: "napoje",

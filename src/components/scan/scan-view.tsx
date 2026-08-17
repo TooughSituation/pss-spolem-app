@@ -38,10 +38,10 @@ export function ScanView() {
       </header>
 
       <div className="relative mx-6 mt-8 aspect-[3/4] overflow-hidden rounded-[28px] bg-zinc-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.18),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,85,164,0.28),transparent_60%)]" />
         <div className="absolute inset-10 rounded-2xl border-2 border-white/70" />
         {scanning && (
-          <div className="scan-line absolute inset-x-12 h-0.5 bg-emerald-400 shadow-[0_0_16px_#34d399]" />
+          <div className="scan-line absolute inset-x-12 h-0.5 bg-[#4d94d4] shadow-[0_0_16px_#0055A4]" />
         )}
         <p className="absolute inset-x-0 bottom-6 text-center text-xs text-white/70">
           {scanning

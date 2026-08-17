@@ -81,7 +81,7 @@ export function StoreMap({
             <span
               className={cn(
                 "block h-7 w-5 origin-bottom rounded-full rounded-b-none border-2 border-white shadow",
-                active ? "scale-110 bg-coop-red" : "bg-primary",
+                active ? "scale-110 bg-error" : "bg-primary",
               )}
               style={{ clipPath: "polygon(50% 100%, 0 35%, 0 20%, 20% 0, 80% 0, 100% 20%, 100% 35%)" }}
             />

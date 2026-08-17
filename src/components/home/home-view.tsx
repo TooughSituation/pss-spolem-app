@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Bell,
   ChevronRight,
   MapPin,
   ScanLine,
@@ -18,41 +17,30 @@ import { flyerValid } from "@/lib/data/promotions";
 import { isStoreOpen, storesByDistance } from "@/lib/data/stores";
 import { NEXT_VOUCHER_AT } from "@/lib/data/user";
 import { greetingForNow } from "@/lib/format";
-import { useUser } from "@/lib/stores/user";
+import { useAuth } from "@/lib/stores/auth";
 import { ProductCard } from "@/components/product/product-card";
-import { SpolemMark } from "@/components/brand/spolem-mark";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
 export function HomeView() {
-  const profile = useUser((s) => s.profile);
+  const user = useAuth((s) => s.user);
   const nearest = storesByDistance().slice(0, 3);
   const promos = promoProducts();
   const own = ownBrandProducts().slice(0, 6);
 
   return (
     <div>
-      <header className="flex items-center justify-between px-4 pb-2 pt-[max(0.85rem,env(safe-area-inset-top))]">
-        <SpolemMark />
-        <Button asChild variant="ghost" size="icon" className="size-10">
-          <Link href="/profil" aria-label="Powiadomienia">
-            <Bell className="size-5" />
-          </Link>
-        </Button>
-      </header>
-
-      <div className="px-4 pb-3">
+      <div className="px-4 pb-3 pt-4">
         <p className="text-sm text-muted-foreground">{greetingForNow()},</p>
         <h2 className="text-2xl font-extrabold tracking-tight">
-          {profile.firstName}
+          {user?.name ?? "Gościu"}
         </h2>
       </div>
 
       <div className="px-4">
         <Link
           href="/lojalnosc"
-          className="block overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-800 via-green-700 to-lime-600 p-4 text-white shadow-lg"
+          className="block overflow-hidden rounded-3xl bg-gradient-to-br from-primary-dark via-primary to-[#2e7ec8] p-4 text-white shadow-lg"
         >
           <div className="flex items-start justify-between">
             <div>
@@ -60,19 +48,20 @@ export function HomeView() {
                 Społem znaczy razem
               </p>
               <p className="mt-2 text-3xl font-black tabular-nums">
-                {profile.points}
+                {user?.pointsBalance ?? 0}
                 <span className="ml-1 text-sm font-semibold text-white/80">
                   pkt
                 </span>
               </p>
               <p className="mt-1 text-xs text-white/80">
-                Brakuje {NEXT_VOUCHER_AT - profile.points} pkt do bonu 50 zł
+                Brakuje {NEXT_VOUCHER_AT - (user?.pointsBalance ?? 0)} pkt do
+                bonu 50 zł
               </p>
             </div>
             <Sparkles className="size-6 text-amber-200" />
           </div>
           <Progress
-            value={(profile.points / NEXT_VOUCHER_AT) * 100}
+            value={((user?.pointsBalance ?? 0) / NEXT_VOUCHER_AT) * 100}
             className="mt-3 h-1.5 bg-white/20 *:bg-amber-300"
           />
         </Link>
@@ -83,7 +72,7 @@ export function HomeView() {
           { href: "/skanuj", label: "Skanuj", icon: ScanLine, tone: "bg-primary text-primary-foreground" },
           { href: "/promocje/gazetka", label: "Gazetka", icon: Sparkles, tone: "bg-accent text-accent-foreground" },
           { href: "/oferta", label: "Oferta", icon: ShoppingBag, tone: "bg-secondary text-secondary-foreground" },
-          { href: "/zamow", label: "Zamów", icon: Store, tone: "bg-[var(--coop-red)] text-white" },
+          { href: "/zamow", label: "Zamów", icon: Store, tone: "bg-error text-white" },
         ].map((item) => (
           <Link
             key={item.href}
@@ -130,7 +119,7 @@ export function HomeView() {
               className="object-cover"
               sizes="430px"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/85 via-emerald-900/55 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary/55 to-transparent" />
           </div>
           <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
             <Badge className="mb-2 w-fit bg-accent text-accent-foreground">

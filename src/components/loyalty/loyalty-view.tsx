@@ -5,6 +5,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { toast } from "sonner";
 import { loyaltyHistory, NEXT_VOUCHER_AT, rewards } from "@/lib/data/user";
 import { formatDate, formatPoints } from "@/lib/format";
+import { useAuth } from "@/lib/stores/auth";
 import { useUser } from "@/lib/stores/user";
 import { ScreenHeader } from "@/components/layout/screen-header";
 import { Badge } from "@/components/ui/badge";
@@ -13,9 +14,13 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function LoyaltyView() {
+  const user = useAuth((s) => s.user);
   const profile = useUser((s) => s.profile);
   const redeem = useUser((s) => s.redeem);
-  const grouped = profile.cardNumber.replace(/(\d{4})/g, "$1 ").trim();
+  const cardNumber = user?.loyaltyCardNumber ?? profile.cardNumber;
+  const displayName = user?.name ?? profile.firstName;
+  const points = user?.pointsBalance ?? profile.points;
+  const grouped = cardNumber.replace(/(\d{4})/g, "$1 ").trim();
 
   return (
     <div>
@@ -29,7 +34,7 @@ export function LoyaltyView() {
             className="object-cover"
             sizes="430px"
           />
-          <div className="relative bg-emerald-950/45 p-5 backdrop-blur-[2px]">
+          <div className="relative bg-primary-dark/55 p-5 backdrop-blur-[2px]">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-200">
@@ -39,15 +44,15 @@ export function LoyaltyView() {
                   {grouped}
                 </p>
                 <p className="mt-2 text-sm font-semibold">
-                  {profile.firstName} {profile.lastName}
+                  {displayName} {profile.lastName}
                 </p>
               </div>
               <div className="rounded-xl bg-white p-2">
                 <QRCodeSVG
-                  value={`PSS:${profile.cardNumber}`}
+                  value={`PSS:${cardNumber}`}
                   size={88}
                   bgColor="#ffffff"
-                  fgColor="#0b3d24"
+                  fgColor="#003366"
                 />
               </div>
             </div>
@@ -62,17 +67,17 @@ export function LoyaltyView() {
             <div>
               <p className="text-xs text-muted-foreground">Twoje punkty</p>
               <p className="text-3xl font-black tabular-nums">
-                {formatPoints(profile.points)}
+                {formatPoints(points)}
               </p>
             </div>
             <Badge>do bonu 50 zł</Badge>
           </div>
           <Progress
-            value={(profile.points / NEXT_VOUCHER_AT) * 100}
+            value={(points / NEXT_VOUCHER_AT) * 100}
             className="mt-3 h-2"
           />
           <p className="mt-2 text-xs text-muted-foreground">
-            Brakuje {formatPoints(NEXT_VOUCHER_AT - profile.points)} pkt
+            Brakuje {formatPoints(NEXT_VOUCHER_AT - points)} pkt
           </p>
         </div>
       </div>
@@ -84,7 +89,7 @@ export function LoyaltyView() {
         </TabsList>
         <TabsContent value="nagrody" className="mt-3 space-y-2">
           {rewards.map((r) => {
-            const ok = profile.points >= r.points;
+            const ok = points >= r.points;
             return (
               <div
                 key={r.id}
@@ -137,7 +142,7 @@ export function LoyaltyView() {
                 className={
                   t.points > 0
                     ? "font-bold text-primary"
-                    : "font-bold text-coop-red"
+                    : "font-bold text-error"
                 }
               >
                 {t.points > 0 ? "+" : ""}

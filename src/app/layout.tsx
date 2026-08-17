@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import { AppShell } from "@/components/layout/app-shell";
 import { PwaRegister } from "@/components/pwa-register";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { colors } from "@/lib/theme/colors";
 import "./globals.css";
 
-const jakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -34,8 +35,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#009241" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1a12" },
+    { media: "(prefers-color-scheme: light)", color: colors.primary },
+    { media: "(prefers-color-scheme: dark)", color: colors.primaryDark },
   ],
   width: "device-width",
   initialScale: 1,
@@ -49,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl" className={jakarta.variable} suppressHydrationWarning>
+    <html lang="pl" className={inter.variable} suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider>
           <AppShell>{children}</AppShell>

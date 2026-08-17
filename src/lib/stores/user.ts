@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { defaultProfile, rewards } from "@/lib/data/user";
+import { useAuth } from "@/lib/stores/auth";
 import type { UserProfile } from "@/lib/types";
 
 type UserState = {
@@ -33,11 +34,19 @@ export const useUser = create<UserState>()(
       redeem: (rewardId) => {
         const reward = rewards.find((r) => r.id === rewardId);
         if (!reward) return false;
-        if (get().profile.points < reward.points) return false;
+        const authUser = useAuth.getState().user;
+        const currentPoints =
+          authUser?.pointsBalance ?? get().profile.points;
+        if (currentPoints < reward.points) return false;
+        if (authUser) {
+          useAuth.getState().updateProfile({
+            pointsBalance: authUser.pointsBalance - reward.points,
+          });
+        }
         set({
           profile: {
             ...get().profile,
-            points: get().profile.points - reward.points,
+            points: currentPoints - reward.points,
           },
         });
         return true;

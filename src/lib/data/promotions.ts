@@ -75,7 +75,7 @@ export const flyerPages: FlyerPage[] = [
     title: "Gazetka tygodnia",
     subtitle: "14–20 sierpnia 2026",
     productIds: [],
-    accent: "from-emerald-700 to-green-600",
+    accent: "from-primary-dark to-primary",
   },
   {
     id: "swieze",
@@ -89,14 +89,14 @@ export const flyerPages: FlyerPage[] = [
     title: "Warzywa i owoce",
     subtitle: "Sezon z polskich pól",
     productIds: ["pomidory", "jablka", "ziemniaki", "marchew"],
-    accent: "from-lime-600 to-emerald-500",
+    accent: "from-sky-600 to-primary",
   },
   {
     id: "wlasne",
     title: "Marka własna PSS",
     subtitle: "Jakość spółdzielni, uczciwa cena",
     productIds: ["chleb-wiejski", "sok-jablkowy", "kasza", "olej"],
-    accent: "from-green-700 to-emerald-600",
+    accent: "from-primary-dark to-[#2e7ec8]",
   },
   {
     id: "dom",

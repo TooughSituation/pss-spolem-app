@@ -47,11 +47,11 @@ export function PromosView() {
                     sizes="430px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <Badge className="absolute left-3 top-3 bg-coop-red text-white">
+                  <Badge className="absolute left-3 top-3 bg-error text-white">
                     {promo.tag}
                   </Badge>
                   {promo.discountPercent && (
-                    <span className="absolute right-3 top-3 rounded-2xl bg-white px-2 py-1 text-sm font-black text-coop-red">
+                    <span className="absolute right-3 top-3 rounded-2xl bg-white px-2 py-1 text-sm font-black text-error">
                       −{promo.discountPercent}%
                     </span>
                   )}
@@ -96,7 +96,7 @@ export function PromosView() {
                 className="object-cover"
                 sizes="430px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-900/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/90 via-primary/30 to-transparent" />
             </div>
             <div className="absolute inset-x-0 bottom-0 p-5 text-white">
               <Badge className="mb-2 bg-accent text-accent-foreground">
