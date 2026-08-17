@@ -22,6 +22,8 @@ export type Product = {
   isOwnBrand: boolean;
   isPromo: boolean;
   oldPrice?: number;
+  promoPrice?: number;
+  badge?: string;
   description: string;
   origin?: string;
   barcode: string;
@@ -120,6 +122,37 @@ export type Reward = {
   name: string;
   points: number;
   description: string;
+};
+
+export type HomeBanner = {
+  id: string;
+  image: string;
+  title: string;
+  subtitle?: string;
+  link: string;
+  order: number;
+};
+
+export type HomeSectionType =
+  | "category-shortcuts"
+  | "horizontal-products"
+  | "grid-products"
+  | "banner";
+
+export type HomeShortcut = {
+  id: string;
+  label: string;
+  emoji: string;
+  href: string;
+};
+
+export type HomeSection = {
+  id: string;
+  type: HomeSectionType;
+  title?: string;
+  href?: string;
+  order: number;
+  items: string[];
 };
 
 export type AuthUser = {

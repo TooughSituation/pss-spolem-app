@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty v2 — niebieski Design System, mock Auth (OTP), Top Bar + 5 zakładek, profil. Nadal sam frontend + Zustand/localStorage.
+> **Status:** fundamenty v2 + **Home v2** — DS #0055A4, mock Auth, Top Bar, 5 zakładek, profil, nowy ekran Home (punkty+QR, carousel, dynamiczne sekcje, pull-to-refresh). Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -78,7 +78,7 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 |-------|---------|------|
 | Login | `/login` | ✅ mock SMS |
 | OTP | `/otp` | ✅ tylko `123456` |
-| Home | `/` | 🔶 stara treść + nowy DS/auth — **następny krok do przebudowy** |
+| Home | `/` | ✅ greeting, karta punktów + QR 160px, carousel, 5 sekcji z mocka, pull-to-refresh |
 | Promocje | `/promocje` | ✅ stare karty, nowa kolorystyka |
 | Gazetka | `/promocje/gazetka` | ✅ fullscreen |
 | Gastronomia | `/gastronomia` | 🔶 placeholder |
@@ -106,7 +106,7 @@ src/lib/
   theme/                      # colors.ts, typography.ts
   auth/routes.ts              # public / auth / fullscreen
   stores/                     # auth, user, cart, shopping-list
-  data/                       # products, stores, promotions, user
+  data/                       # banners, home-sections, products, stores, promotions, user
   constants.ts types.ts
 public/                       # manifest, sw.js, icons/, images/
 ```
@@ -126,13 +126,15 @@ Build lokalny (`npm run build`) przechodzi.
 
 ## Co jest gotowe / co dalej
 
-**Zrobione (ten krok):** DS niebieski, Top Bar, 5 tabów, mock OTP, ochrona tras, profil, placeholdery przyszłych ekranów.
+**Zrobione:** DS niebieski, Top Bar, 5 tabów, mock OTP, profil, **Home v2**.
 
-**Następny krok — Home (`/`):** przebudować ekran główny pod oficjalną specyfikację, korzystając z `useAuth` + komponentów DS. Nie ruszać auth/shell, o ile spec tego nie wymaga.
+**Home (`/`):** `src/components/home/` — HomeHeader, PointsCard, BannerCarousel, HomeSection, ProductCardHorizontal/Grid, CategoryShortcuts, PullToRefresh. Dane: `src/lib/data/banners.ts` + `home-sections.ts`. Kolejność sekcji: skróty → Hity tygodnia (horizontal) → banner → Produkcja własna (grid) → Wyprzedaż (horizontal).
+
+**Następny krok (rekomendacja):** Promocje (`/promocje`) albo rozbudowa karty punktów / `/lojalnosc`.
 
 Dalsze etapy (później):
 
-- [ ] Przebudowa Home
+- [ ] Przebudowa Promocji / lojalności
 - [ ] Gastronomia (menu, danie, zamówienie)
 - [ ] Prawdziwe API + SMS
 - [ ] Integracja „Społem znaczy razem”
@@ -149,7 +151,7 @@ Dalsze etapy (później):
 5. **Design:** mobile-first, ramka telefonu, paleta `#0055A4`, Inter, light only
 6. **Deploy:** `git push origin main` (Vercel podpięty)
 7. **Język:** polski
-8. **Kolejny krok:** przebudowa Home
+8. **Kolejny krok:** Promocje albo rozbudowa karty punktów / lojalności
 
 ### Wklejka kontekstowa (krótka)
 
@@ -166,12 +168,16 @@ Bottom nav: Home | Promocje | Gastronomia | Sklepy | Profil
 Auth mock: /login /otp · kod 123456 · persist pss-auth
 Top Bar stały na Main. Profil: dane + punkty + wylogowanie.
 
+Home v2: greeting, PointsCard+QR, BannerCarousel, dynamiczne sekcje
+        (shortcuts, horizontal, banner, grid), pull-to-refresh
+        dane: src/lib/data/banners.ts + home-sections.ts
+
 Ekrany: /login /otp / /promocje /gastronomia /sklepy /profil /ustawienia
         /oferta /oferta/[id] /promocje/gazetka /lista /lojalnosc
         /skanuj /zamow + placeholdery /produkt /danie /checkout /zamowienie
 
 Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
-Brak backendu. KOLEJNY KROK: przebudowa Home pod oficjalną specyfikację.
+Brak backendu. KOLEJNY KROK: Promocje albo rozbudowa lojalności / karty punktów.
 ```
 
 ## Kontekst developera

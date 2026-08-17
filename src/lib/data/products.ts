@@ -13,6 +13,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: true,
     isPromo: false,
+    badge: "Marka PSS",
     description:
       "Tradycyjny chleb pieczony na zakwasie w piekarni spółdzielczej. Chrupiąca skórka, wilgotny miąższ.",
     origin: "Piekarnia PSS",
@@ -62,6 +63,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
     isPromo: true,
+    badge: "Promocja",
     description: "Maślane rogale z chrupiącą skórką. Promocja tygodnia.",
     barcode: "5901234000042",
   },
@@ -94,6 +96,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
     isPromo: true,
+    badge: "Hit tygodnia",
     description: "Klasyczne masło extra. Promocja do końca tygodnia.",
     origin: "Polska",
     barcode: "5901234000066",
@@ -173,6 +176,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1524438418049-ab2acb7aa48f?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: true,
     isPromo: true,
+    badge: "Marka PSS",
     description: "Klasyczna szynka konserwowa marki własnej. Wysoka zawartość mięsa.",
     barcode: "5901234000110",
   },
@@ -205,6 +209,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
     isPromo: true,
+    badge: "−15%",
     description: "Świeży filet z piersi kurczaka. Promocja tygodnia.",
     origin: "Polska",
     barcode: "5901234000134",
@@ -439,6 +444,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
     isPromo: true,
+    badge: "−21%",
     description: "Sok z zagęszczonego soku pomarańczowego. Witamina C.",
     barcode: "5901234000288",
   },
@@ -500,6 +506,7 @@ export const products: Product[] = [
       "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
     isPromo: true,
+    badge: "Wyprzedaż",
     description: "Uniwersalny proszek do białego i kolorowego. Promocja tygodnia.",
     barcode: "5901234000325",
   },
@@ -684,4 +691,23 @@ export function promoProducts() {
 
 export function ownBrandProducts() {
   return products.filter((p) => p.isOwnBrand);
+}
+
+export function productPricing(product: Product) {
+  if (product.promoPrice != null) {
+    return { price: product.price, promoPrice: product.promoPrice };
+  }
+  if (product.oldPrice != null) {
+    return { price: product.oldPrice, promoPrice: product.price };
+  }
+  return { price: product.price, promoPrice: undefined };
+}
+
+export function productBadge(product: Product) {
+  if (product.badge) return product.badge;
+  if (product.isPromo || product.promoPrice != null || product.oldPrice != null) {
+    return "Promocja";
+  }
+  if (product.isOwnBrand) return "Marka PSS";
+  return undefined;
 }
