@@ -10,7 +10,7 @@ export function SpolemMark({
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
       <span
-        className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-sm font-bold tracking-tight text-primary-foreground shadow-sm"
+        className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary text-[11px] font-bold tracking-tight text-primary-foreground"
         aria-hidden
       >
         PSS

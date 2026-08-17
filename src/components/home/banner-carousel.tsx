@@ -95,9 +95,14 @@ export function BannerSlide({ banner }: { banner: HomeBanner }) {
         sizes="430px"
         priority={banner.order === 1}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/88 via-primary/45 to-transparent" />
+      <div className="absolute inset-0 bg-primary-dark/75" />
       <div className="absolute inset-0 flex flex-col justify-end p-4 text-white">
-        <p className="text-lg font-bold leading-tight">{banner.title}</p>
+        <span className="mb-2 w-fit border border-white/70 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em]">
+          Gazetka / oferta
+        </span>
+        <p className="text-xl font-bold leading-tight tracking-tight">
+          {banner.title}
+        </p>
         {banner.subtitle ? (
           <p className="mt-1 text-sm text-white/85">{banner.subtitle}</p>
         ) : null}

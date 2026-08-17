@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AppBadge } from "@/components/design-system/app-badge";
 import { AppCard } from "@/components/design-system/app-card";
 import { ProductPrice } from "@/components/home/product-card-horizontal";
+import { AddToListButton } from "@/components/list/add-to-list-button";
 import { productBadge, productPricing } from "@/lib/data/products";
 import type { Product } from "@/lib/types";
 
@@ -34,8 +35,9 @@ export function ProductCardGrid({ product }: { product: Product }) {
           <p className="line-clamp-2 min-h-10 text-sm font-semibold leading-snug">
             {product.name}
           </p>
-          <div className="mt-auto">
+          <div className="mt-auto flex items-end justify-between gap-2 pt-1">
             <ProductPrice price={price} promoPrice={promoPrice} />
+            <AddToListButton product={product} />
           </div>
         </div>
       </AppCard>

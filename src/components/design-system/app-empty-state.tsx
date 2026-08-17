@@ -22,7 +22,7 @@ export function AppEmptyState({
       )}
     >
       {icon ? (
-        <div className="mb-4 grid size-16 place-items-center rounded-2xl bg-accent-light text-primary">
+        <div className="mb-4 grid size-16 place-items-center rounded-xl border border-primary/15 bg-accent-light text-primary">
           {icon}
         </div>
       ) : null}

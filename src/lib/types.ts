@@ -100,6 +100,7 @@ export type ShoppingListItem = {
   unit: string;
   checked: boolean;
   price?: number;
+  category?: string;
 };
 
 export type CartItem = {

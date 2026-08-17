@@ -18,7 +18,11 @@ const tabs = [
     label: "Home",
     icon: Home,
     match: (p: string) =>
-      p === "/" || p.startsWith("/oferta") || p.startsWith("/skanuj") || p.startsWith("/produkt"),
+      p === "/" ||
+      p.startsWith("/oferta") ||
+      p.startsWith("/skanuj") ||
+      p.startsWith("/produkt") ||
+      p.startsWith("/lista"),
   },
   {
     href: "/promocje",

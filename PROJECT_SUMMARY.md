@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty + Home + Promocje + Sklepy + Gastronomia + Lojalność A1 + **Profil A2**. Nadal sam frontend + Zustand/localStorage.
+> **Status:** pełny mock B2C + **Lista zakupów** + branding PSS Społem Białystok. Nadal frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -87,7 +87,7 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 | Ustawienia | `/ustawienia` | ✅ edycja imienia i telefonu |
 | Lojalność | `/lojalnosc` | ✅ karta + QR 160px, historia, wymiana, e-bony |
 | Oferta / produkt stary | `/oferta`, `/oferta/[id]` | ✅ zostaje |
-| Lista | `/lista` | ✅ istnieje, **nie ma w tabach** |
+| Lista | `/lista` | ✅ ręcznie + z Home/Promocji, grupy, share, persist |
 | Skaner / zamów | `/skanuj`, `/zamow` | ✅ |
 | Danie | `/danie/[id]` | ✅ dodatki, uwagi, dodaj do koszyka |
 | Checkout | `/checkout` | ✅ adres, slot, płatność mock |
@@ -131,9 +131,13 @@ Build lokalny (`npm run build`) przechodzi.
 
 **Zrobione:** DS, Auth, Home, Promocje, Sklepy, Gastronomia, Lojalność A1, **Profil A2**.
 
-**Profil:** edycja imienia/telefonu, CRUD adresów (`pss-user.addresses`, współdzielone z checkout), historia zamówień gastro (`/zamowienie/[id]`), powiadomienia lokalne, wylogowanie i usunięcie konta (czyści localStorage).
+**Profil A2:** edycja danych, CRUD adresów, historia zamówień, usuń konto.
 
-**Następny krok:** dopracowania (prawdziwe API, płatności, geo) albo polerowanie UX.
+**Lista (`/lista`):** dodawanie ręczne i z Home/Promocji (`AddToListButton`), ilości, odhaczanie, grupy kategorii, Web Share / schowek. Wejście: ikona koszyka w Top Barze.
+
+**Branding:** karta członkowska (nie widget), Top Bar z belką primary, gazetkowe bannery, pewniejsze CTA.
+
+**Następny krok:** backend / płatności albo szlif UX.
 
 Dalsze etapy (później):
 
@@ -184,7 +188,8 @@ Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
 Sklepy v2: Leaflet/OSM, 10 placówek Białystok
 Gastronomia: 8 kat. / 24 dania, pss-gastro-cart, /danie /checkout /zamowienie
 Lojalność A1: pss-auth.pointsBalance + pss-loyalty
-Profil A2: CRUD adresów (pss-user), historia zamówień, usuń konto
+Profil A2 + Lista zakupów (pss-shopping-list, dodawanie z Home/Promocji)
+Branding: karta członkowska, belka Top Bar, gazetkowe bannery
 Brak backendu. KOLEJNY KROK: backend / płatności albo szlif UX.
 ```
 

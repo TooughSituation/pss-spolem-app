@@ -31,6 +31,7 @@ export const useShoppingList = create<ShoppingListState>()(
           unit: "szt.",
           checked: false,
           price: 6.49,
+          category: "pieczywo",
         },
         {
           id: "seed-2",
@@ -40,6 +41,7 @@ export const useShoppingList = create<ShoppingListState>()(
           unit: "szt.",
           checked: false,
           price: 3.29,
+          category: "nabial",
         },
         {
           id: "seed-3",
@@ -69,6 +71,7 @@ export const useShoppingList = create<ShoppingListState>()(
               unit: product.unit,
               checked: false,
               price: product.price,
+              category: product.category,
             },
             ...get().items,
           ],

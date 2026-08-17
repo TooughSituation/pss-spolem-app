@@ -11,7 +11,7 @@ export function AppCard({
   return (
     <div
       className={cn(
-        "rounded-xl border border-border bg-card text-card-foreground shadow-[0_4px_16px_rgba(0,85,164,0.06)]",
+        "rounded-xl border border-border bg-card text-card-foreground shadow-[0_3px_12px_rgba(0,51,102,0.07)]",
         padding === "sm" && "p-3",
         padding === "md" && "p-4",
         padding === "lg" && "p-5",
