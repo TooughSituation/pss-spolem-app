@@ -9,7 +9,7 @@ const appButtonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary text-primary-foreground shadow-[0_2px_8px_rgba(0,85,164,0.28)] hover:bg-primary-dark active:bg-primary-dark",
+          "bg-primary text-primary-foreground shadow-[0_2px_8px_rgba(0,85,164,0.28)] hover:bg-primary-dark hover:shadow-[0_4px_12px_rgba(0,85,164,0.34)] active:bg-primary-dark",
         secondary:
           "bg-accent-light text-primary-dark hover:bg-primary/15",
         outline:

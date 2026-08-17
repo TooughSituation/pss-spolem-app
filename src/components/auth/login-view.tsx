@@ -70,9 +70,9 @@ export function LoginView() {
   };
 
   return (
-    <div className="flex min-h-full flex-col px-5 pb-8 pt-[max(2rem,env(safe-area-inset-top))]">
-      <SpolemMark />
-      <h1 className="mt-8 text-2xl font-bold tracking-tight">Zaloguj się</h1>
+    <div className="flex min-h-full flex-col px-5 pb-8 pt-[max(2.5rem,env(safe-area-inset-top))]">
+      <SpolemMark size="lg" />
+      <h1 className="mt-10 text-2xl font-bold tracking-tight">Zaloguj się</h1>
       <p className="mt-2 text-sm leading-relaxed text-text-secondary">
         Podaj numer telefonu, a wyślemy kod SMS. Numer karty klienta jest
         opcjonalny.

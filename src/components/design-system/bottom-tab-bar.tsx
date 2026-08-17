@@ -77,7 +77,7 @@ export function BottomTabBar() {
               <Link
                 href={tab.href}
                 className={cn(
-                  "relative flex h-full flex-col items-center justify-center gap-0.5 px-1 text-center text-[11px] font-semibold leading-tight transition-colors",
+                  "relative flex h-full flex-col items-center justify-center gap-0.5 px-1 text-center text-[11px] font-semibold leading-tight transition-colors duration-150 active:scale-[0.97]",
                   active ? "text-primary" : "text-text-secondary",
                 )}
                 aria-current={active ? "page" : undefined}

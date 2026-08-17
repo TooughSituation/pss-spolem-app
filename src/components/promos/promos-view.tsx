@@ -69,7 +69,7 @@ export function PromosView() {
 
       <Link
         href="/promocje/gazetka"
-        className="mx-4 mt-3 flex items-center justify-between rounded-xl bg-accent-light px-3 py-2.5 text-sm font-semibold text-primary"
+        className="mx-4 mt-4 flex items-center justify-between rounded-xl bg-accent-light px-3 py-3 text-sm font-semibold text-primary transition-colors hover:bg-primary/15"
       >
         <span className="inline-flex items-center gap-2">
           <BookOpen className="size-4" />
@@ -102,8 +102,8 @@ export function PromosView() {
       {products.length === 0 ? (
         <AppEmptyState
           icon={<SearchX className="size-7" />}
-          title="Brak wyników"
-          description="Zmień grupę, wyszukiwanie albo filtry — w tej kombinacji nic nie znaleźliśmy."
+          title="Nic nie pasuje do tej gazetki"
+          description="Spróbuj innej grupy, skróć wyszukiwanie albo zdejmij filtry — oferta Społem jest szersza."
         />
       ) : (
         <div className="mt-4 grid grid-cols-2 gap-3 px-4">

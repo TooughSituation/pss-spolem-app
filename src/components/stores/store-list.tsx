@@ -16,8 +16,8 @@ export function StoreList({
     return (
       <AppEmptyState
         icon={<MapPin className="size-7" />}
-        title="Brak placówek"
-        description="Zmień filtry — w tej kombinacji nic nie znaleźliśmy."
+        title="Brak placówek w tym filtrze"
+        description="W Białymstoku nic nie pasuje. Odznacz „otwarte teraz” albo zmień typ — sklep, bar albo wszystkie."
       />
     );
   }

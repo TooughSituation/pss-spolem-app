@@ -44,9 +44,11 @@ export function ProfileView() {
         onEdit={() => router.push("/ustawienia")}
       />
 
-      <AppCard className="bg-primary text-primary-foreground">
-        <p className="text-sm font-medium text-white/80">Twoje punkty</p>
-        <p className="mt-1 text-3xl font-bold tabular-nums">
+      <AppCard className="border-0 bg-primary text-primary-foreground shadow-[0_8px_20px_rgba(0,85,164,0.28)]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
+          Twoje punkty
+        </p>
+        <p className="mt-1.5 text-3xl font-bold tabular-nums">
           {formatPoints(user.pointsBalance)}
           <span className="ml-1 text-sm font-medium text-white/80">pkt</span>
         </p>
@@ -65,8 +67,8 @@ export function ProfileView() {
         {orders.length === 0 ? (
           <AppEmptyState
             icon={<ShoppingBag className="size-7" />}
-            title="Brak zamówień"
-            description="Zamówienia z gastronomii pojawią się tutaj."
+            title="Jeszcze nic z baru"
+            description="Zamów obiad ze stołówki Społem — historia pojawi się tutaj."
             className="py-8"
           />
         ) : (

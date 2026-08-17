@@ -9,7 +9,9 @@ import { RewardCard } from "@/components/loyalty/reward-card";
 import { VoucherCard } from "@/components/loyalty/voucher-card";
 import { AppButton } from "@/components/design-system/app-button";
 import { AppChip } from "@/components/design-system/app-chip";
+import { AppEmptyState } from "@/components/design-system/app-empty-state";
 import { ScreenHeader } from "@/components/layout/screen-header";
+import { Ticket } from "lucide-react";
 import { loyaltyRewards } from "@/lib/data/loyalty";
 import { useAuth } from "@/lib/stores/auth";
 import { useLoyalty } from "@/lib/stores/loyalty";
@@ -98,9 +100,12 @@ export function LoyaltyView() {
           <section className="space-y-3">
             <h2 className="text-base font-bold">Moje e-bony</h2>
             {vouchers.length === 0 ? (
-              <p className="text-sm text-text-secondary">
-                Nie masz jeszcze e-bonów. Wymień punkty w zakładce Nagrody.
-              </p>
+              <AppEmptyState
+                icon={<Ticket className="size-7" />}
+                title="Nie masz jeszcze e-bonów"
+                description="Wymień punkty w zakładce Nagrody — e-bon pokażesz przy kasie Społem."
+                className="py-10"
+              />
             ) : (
               vouchers.map((voucher) => (
                 <VoucherCard key={voucher.id} voucher={voucher} />

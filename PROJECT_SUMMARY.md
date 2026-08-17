@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** pełny mock B2C + **Lista zakupów** + branding PSS Społem Białystok. Nadal frontend + Zustand/localStorage.
+> **Status:** pełny mock B2C + **oficjalne logo PSS Społem** + spójny polish UI. Nadal frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -55,7 +55,7 @@ Pliki: `src/lib/theme/colors.ts`, `src/lib/theme/typography.ts`, `src/app/global
 
 Komponenty: `src/components/design-system/` — AppButton, AppCard, AppBadge, AppChip/AppTag, AppInput, AppEmptyState, AppSkeleton, AppTopBar, BottomTabBar.
 
-Logo na razie tekstowe: „PSS Społem / Białystok” (`src/components/brand/spolem-mark.tsx`).
+Logo: oficjalny lockup PSS Społem Białystok (PSS + „spolem” + Białystok) w `public/logo/` — PNG `#0055A4`, wariant biały i znak PSS. Komponent: `src/components/brand/spolem-mark.tsx` (Top Bar, login, OTP, splash, karta, gazetka, 404/offline).
 
 ## Auth (mock, tylko frontend)
 
@@ -72,7 +72,7 @@ Logo na razie tekstowe: „PSS Społem / Białystok” (`src/components/brand/sp
 
 **Bottom tabs (dokładnie 5):** Home `/` · Promocje `/promocje` · Gastronomia `/gastronomia` · Sklepy `/sklepy` · Profil `/profil`
 
-AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
+AppTopBar (oficjalne logo + lista zakupów z badge + dzwonek) na wszystkich ekranach Main po zalogowaniu. Cienka belka primary u góry, delikatna krawędź na dole.
 
 | Moduł | Ścieżka | Stan |
 |-------|---------|------|
@@ -111,7 +111,7 @@ src/lib/
   stores/                     # auth, user, cart, shopping-list
   data/                       # banners, home-sections, promotion-groups, products, stores, promotions, user
   constants.ts types.ts
-public/                       # manifest, sw.js, icons/, images/
+public/                       # manifest, sw.js, icons/, images/, logo/
 ```
 
 Klucze persist: `pss-auth` (punkty + karta), `pss-loyalty` (transakcje + e-bony), `pss-user`, `pss-shopping-list`, `pss-cart`, `pss-gastro-cart`.
@@ -129,15 +129,15 @@ Build lokalny (`npm run build`) przechodzi.
 
 ## Co jest gotowe / co dalej
 
-**Zrobione:** DS, Auth, Home, Promocje, Sklepy, Gastronomia, Lojalność A1, **Profil A2**.
+**Zrobione:** DS, Auth, Home, Promocje, Sklepy, Gastronomia, Lojalność A1, Profil A2, Lista, **logo + polish UI**.
 
-**Profil A2:** edycja danych, CRUD adresów, historia zamówień, usuń konto.
+**Logo:** oficjalny znak PSS Społem Białystok w Top Barze, na logowaniu, splashu, karcie członkowskiej, gazetce i ikonach PWA.
+
+**Branding / polish:** karta członkowska z logo i chipem, jednolite karty (produkty / dania / sklepy / nagrody), CTA z hover/active, cieplejsze empty states, Inter, primary `#0055A4`.
 
 **Lista (`/lista`):** dodawanie ręczne i z Home/Promocji (`AddToListButton`), ilości, odhaczanie, grupy kategorii, Web Share / schowek. Wejście: ikona koszyka w Top Barze.
 
-**Branding:** karta członkowska (nie widget), Top Bar z belką primary, gazetkowe bannery, pewniejsze CTA.
-
-**Następny krok:** backend / płatności albo szlif UX.
+**Następny krok:** backend / płatności. Admin `/admin` (mock) nie wszedł w ten krok.
 
 Dalsze etapy (później):
 
@@ -189,8 +189,9 @@ Sklepy v2: Leaflet/OSM, 10 placówek Białystok
 Gastronomia: 8 kat. / 24 dania, pss-gastro-cart, /danie /checkout /zamowienie
 Lojalność A1: pss-auth.pointsBalance + pss-loyalty
 Profil A2 + Lista zakupów (pss-shopping-list, dodawanie z Home/Promocji)
-Branding: karta członkowska, belka Top Bar, gazetkowe bannery
-Brak backendu. KOLEJNY KROK: backend / płatności albo szlif UX.
+Logo: public/logo/pss-spolem.png (+ white, mark) · SpolemMark w Top Bar / login / splash / karcie
+Branding: karta członkowska, belka Top Bar, gazetkowe bannery, spójne karty/CTA
+Brak backendu. KOLEJNY KROK: backend / płatności. Admin /admin niepriorytetowe.
 ```
 
 ## Kontekst developera

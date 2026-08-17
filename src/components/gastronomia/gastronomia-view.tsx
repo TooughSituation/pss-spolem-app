@@ -55,8 +55,8 @@ export function GastronomiaView() {
         {list.length === 0 ? (
           <AppEmptyState
             icon={<UtensilsCrossed className="size-7" />}
-            title="Brak dań"
-            description="W tej kategorii nie ma teraz pozycji."
+            title="Kuchnia milczy w tej kategorii"
+            description="Zajrzyj do dań dnia albo wybierz inną grupę — stołówka Społem zwykle ma co podać."
           />
         ) : (
           <div className="space-y-3">

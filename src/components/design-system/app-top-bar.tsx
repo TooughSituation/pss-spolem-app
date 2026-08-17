@@ -1,10 +1,12 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { Bell, ShoppingBasket } from "lucide-react";
 import { toast } from "sonner";
 import { SpolemMark } from "@/components/brand/spolem-mark";
 import { useShoppingList } from "@/lib/stores/shopping-list";
+import { cn } from "@/lib/utils";
 
 export function AppTopBar({
   showNotifications = true,
@@ -19,36 +21,32 @@ export function AppTopBar({
   return (
     <header
       className="relative z-30 flex shrink-0 items-center justify-between bg-background px-4 pb-2.5"
-      style={{ paddingTop: "max(0.75rem, env(safe-area-inset-top))" }}
+      style={{ paddingTop: "max(0.625rem, env(safe-area-inset-top))" }}
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-primary"
+        className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-primary"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[3px] bg-primary"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-border"
         aria-hidden
       />
-      <SpolemMark />
-      <div className="flex items-center">
-        <button
-          type="button"
-          className="relative grid size-11 place-items-center rounded-xl text-primary hover:bg-accent-light"
-          aria-label="Lista zakupów"
+      <SpolemMark size="md" />
+      <div className="flex items-center gap-0.5">
+        <TopBarIcon
+          label="Lista zakupów"
           onClick={() => router.push("/lista")}
         >
           <ShoppingBasket className="size-5" />
           {listCount > 0 ? (
-            <span className="absolute right-1.5 top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-bold text-white">
-              {listCount}
+            <span className="absolute right-1 top-1 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[10px] font-bold leading-none text-white">
+              {listCount > 99 ? "99+" : listCount}
             </span>
           ) : null}
-        </button>
+        </TopBarIcon>
         {showNotifications ? (
-          <button
-            type="button"
-            className="grid size-11 place-items-center rounded-xl text-primary hover:bg-accent-light"
-            aria-label="Powiadomienia"
+          <TopBarIcon
+            label="Powiadomienia"
             onClick={() =>
               toast("Cisza w skrzynce", {
                 description:
@@ -57,9 +55,33 @@ export function AppTopBar({
             }
           >
             <Bell className="size-5" />
-          </button>
+          </TopBarIcon>
         ) : null}
       </div>
     </header>
+  );
+}
+
+function TopBarIcon({
+  label,
+  onClick,
+  children,
+}: {
+  label: string;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      className={cn(
+        "relative grid size-11 place-items-center rounded-xl text-primary",
+        "transition-colors duration-150 hover:bg-accent-light active:scale-[0.96]",
+      )}
+      aria-label={label}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 }

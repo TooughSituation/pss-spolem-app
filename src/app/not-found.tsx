@@ -1,17 +1,21 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { appButtonVariants } from "@/components/design-system/app-button";
+import { SpolemMark } from "@/components/brand/spolem-mark";
 
 export default function NotFound() {
   return (
-    <div className="px-6 py-16 text-center">
-      <p className="text-5xl font-black text-primary">404</p>
-      <h1 className="mt-2 text-xl font-extrabold">Nie znaleźliśmy tej strony</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Sprawdź adres albo wróć do ekranu głównego PSS Społem.
+    <div className="flex min-h-full flex-col items-center px-6 py-16 text-center">
+      <SpolemMark size="md" />
+      <p className="mt-8 text-5xl font-bold text-primary">404</p>
+      <h1 className="mt-3 text-xl font-bold tracking-tight">
+        Nie znaleźliśmy tej strony
+      </h1>
+      <p className="mt-2 max-w-[280px] text-sm leading-relaxed text-text-secondary">
+        Sprawdź adres albo wróć do ekranu głównego PSS Społem Białystok.
       </p>
-      <Button asChild className="mt-6">
-        <Link href="/">Do domu</Link>
-      </Button>
+      <Link href="/" className={appButtonVariants({ className: "mt-6" })}>
+        Do domu
+      </Link>
     </div>
   );
 }

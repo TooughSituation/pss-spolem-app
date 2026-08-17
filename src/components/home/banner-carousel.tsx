@@ -44,7 +44,7 @@ export function BannerCarousel({ banners }: { banners: HomeBanner[] }) {
   return (
     <section className="px-4" aria-roledescription="karuzela" aria-label="Banery">
       <div
-        className="relative overflow-hidden rounded-xl"
+        className="relative overflow-hidden rounded-xl shadow-[0_3px_12px_rgba(0,51,102,0.07)]"
         onPointerDown={pause}
         onTouchStart={pause}
       >

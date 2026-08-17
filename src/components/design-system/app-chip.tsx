@@ -13,7 +13,7 @@ export function AppChip({
     <button
       type="button"
       className={cn(
-        "inline-flex h-9 items-center rounded-full border px-3 text-sm font-medium transition-colors",
+        "inline-flex h-9 items-center rounded-full border px-3 text-sm font-medium transition-colors duration-150 active:scale-[0.98]",
         selected
           ? "border-primary bg-primary text-primary-foreground"
           : "border-border bg-background text-text-secondary hover:border-primary hover:text-primary",

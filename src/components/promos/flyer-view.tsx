@@ -9,6 +9,7 @@ import { getProduct } from "@/lib/data/products";
 import { flyerPages, flyerValid } from "@/lib/data/promotions";
 import { formatPrice } from "@/lib/format";
 import { useShoppingList } from "@/lib/stores/shopping-list";
+import { SpolemMark } from "@/components/brand/spolem-mark";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -38,9 +39,9 @@ export function FlyerView() {
           </Link>
         </Button>
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-extrabold">Gazetka PSS Społem</p>
-          <p className="text-[11px] text-white/70">
-            {flyerValid.from} – {flyerValid.to}
+          <SpolemMark variant="white" size="sm" />
+          <p className="mt-1 text-[11px] text-white/70">
+            Gazetka · {flyerValid.from} – {flyerValid.to}
           </p>
         </div>
         <span className="rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-semibold">
@@ -76,7 +77,7 @@ export function FlyerView() {
                   <h2 className="mt-2 text-4xl font-black leading-none">
                     Gazetka
                     <br />
-                    PSS Społem
+                    tygodnia
                   </h2>
                   <p className="mt-3 text-sm text-white/80">{p.subtitle}</p>
                   <p className="mt-6 text-xs text-white/60">

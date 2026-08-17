@@ -34,6 +34,7 @@ export function StoreCard({
   return (
     <AppCard
       padding="md"
+      interactive
       className={cn(selected && "border-primary ring-2 ring-primary/20")}
     >
       <button

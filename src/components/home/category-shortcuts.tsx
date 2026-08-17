@@ -14,9 +14,9 @@ export function CategoryShortcuts({ ids }: { ids: string[] }) {
         <Link
           key={item.id}
           href={item.href}
-          className="flex flex-col items-center gap-1.5 text-center"
+          className="flex flex-col items-center gap-1.5 text-center transition-transform duration-150 active:scale-[0.96]"
         >
-          <span className="grid size-12 place-items-center rounded-xl bg-accent-light text-xl">
+          <span className="grid size-12 place-items-center rounded-xl bg-accent-light text-xl transition-colors hover:bg-primary/10">
             {item.emoji}
           </span>
           <span className="text-[11px] font-semibold leading-tight text-text-primary">

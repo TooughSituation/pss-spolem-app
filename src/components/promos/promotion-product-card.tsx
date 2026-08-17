@@ -14,7 +14,11 @@ export function PromotionProductCard({ product }: { product: Product }) {
 
   return (
     <Link href={`/oferta/${product.id}`} className="min-w-0">
-      <AppCard padding="none" className="flex h-full flex-col overflow-hidden">
+      <AppCard
+        padding="none"
+        interactive
+        className="flex h-full flex-col overflow-hidden"
+      >
         <div className="relative aspect-[4/3] bg-accent-light">
           <Image
             src={product.image}
@@ -37,8 +41,8 @@ export function PromotionProductCard({ product }: { product: Product }) {
             </AppBadge>
           ) : null}
         </div>
-        <div className="flex flex-1 flex-col p-2.5">
-          <p className="line-clamp-2 min-h-10 text-sm font-semibold leading-snug">
+        <div className="flex flex-1 flex-col p-3">
+          <p className="line-clamp-2 min-h-10 text-sm font-semibold leading-snug text-text-primary">
             {product.name}
           </p>
           <div className="mt-auto flex items-end justify-between gap-2 pt-1.5">

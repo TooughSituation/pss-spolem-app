@@ -37,7 +37,7 @@ export function HomeView() {
       {loading ? (
         <HomeSkeleton />
       ) : (
-        <div className="space-y-5 pb-6">
+        <div className="space-y-6 pb-8">
           <HomeHeader name={name} />
           <PointsCard name={name} points={points} cardNumber={cardNumber} />
           <BannerCarousel banners={banners} />

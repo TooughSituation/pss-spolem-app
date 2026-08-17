@@ -47,8 +47,8 @@ export function AddressList() {
       {addresses.length === 0 && editing !== "new" ? (
         <AppEmptyState
           icon={<MapPin className="size-7" />}
-          title="Brak adresów"
-          description="Dodaj adres, żeby szybciej zamawiać z gastronomii."
+          title="Brak adresów dostawy"
+          description="Dopisz adres w Białymstoku, żeby szybciej zamawiać z baru i stołówki."
           className="py-8"
         />
       ) : (

@@ -47,7 +47,7 @@ export function PointsHistory({
         <AppEmptyState
           icon={<Receipt className="size-7" />}
           title="Brak operacji"
-          description="W tym filtrze nie ma jeszcze historii punktów."
+          description="Tu pojawią się naliczenia z kas Społem i wymiany na e-bony."
           className="py-10"
         />
       ) : (

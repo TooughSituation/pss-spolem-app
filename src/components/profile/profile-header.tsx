@@ -12,7 +12,7 @@ export function ProfileHeader({
   return (
     <AppCard>
       <div className="flex items-center gap-3">
-        <span className="grid size-14 place-items-center rounded-2xl bg-primary text-lg font-bold text-primary-foreground">
+        <span className="grid size-14 place-items-center rounded-xl bg-primary text-lg font-bold text-primary-foreground">
           {user.name.slice(0, 1)}
         </span>
         <div className="min-w-0 flex-1">

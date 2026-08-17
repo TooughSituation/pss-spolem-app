@@ -35,8 +35,8 @@ export function HomeSection({ section }: { section: HomeSectionData }) {
       <section>
         {section.title ? <SectionHead title={section.title} href={section.href} /> : null}
         <AppEmptyState
-          title="Brak produktów"
-          description="Ta sekcja nie ma teraz pozycji do pokazania."
+          title="Pusto na tej półce"
+          description="Na razie nic tu nie leży. Zajrzyj do promocji tygodnia albo wróć za chwilę."
           className="py-8"
         />
       </section>

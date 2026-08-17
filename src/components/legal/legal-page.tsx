@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { SpolemMark } from "@/components/brand/spolem-mark";
 
 export function LegalPage({
   title,
@@ -10,8 +11,8 @@ export function LegalPage({
 }) {
   return (
     <article className="px-5 pb-10 pt-[max(1.5rem,env(safe-area-inset-top))]">
-      <p className="text-sm font-semibold text-primary">PSS Społem</p>
-      <h1 className="mt-2 text-2xl font-bold tracking-tight">{title}</h1>
+      <SpolemMark size="sm" />
+      <h1 className="mt-6 text-2xl font-bold tracking-tight">{title}</h1>
       <div className="mt-5 space-y-3 text-sm leading-relaxed text-text-secondary">
         {children}
       </div>

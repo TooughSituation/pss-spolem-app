@@ -64,12 +64,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
 function SplashScreen() {
   return (
-    <div className="flex min-h-full flex-col items-center justify-center gap-6 px-8 py-16">
-      <SpolemMark />
-      <div className="w-full max-w-[240px] space-y-2">
-        <AppSkeleton className="h-3 w-3/4" />
-        <AppSkeleton className="h-3 w-full" />
-        <AppSkeleton className="h-3 w-2/3" />
+    <div className="flex min-h-full flex-col items-center justify-center gap-8 px-8 py-16">
+      <SpolemMark size="xl" />
+      <div className="w-full max-w-[200px] space-y-2">
+        <AppSkeleton className="mx-auto h-2 w-3/4" />
+        <AppSkeleton className="h-2 w-full" />
+        <AppSkeleton className="mx-auto h-2 w-2/3" />
       </div>
     </div>
   );

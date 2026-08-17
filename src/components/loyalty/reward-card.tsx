@@ -18,10 +18,10 @@ export function RewardCard({
   const ok = points >= reward.pointsCost;
 
   return (
-    <AppCard>
+    <AppCard interactive>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="font-bold">{reward.title}</p>
+          <p className="font-bold text-text-primary">{reward.title}</p>
           <p className="mt-1 text-sm text-text-secondary">{reward.description}</p>
         </div>
         <AppBadge variant={ok ? "default" : "secondary"}>

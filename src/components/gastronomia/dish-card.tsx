@@ -18,10 +18,10 @@ export function DishCard({
   const router = useRouter();
 
   return (
-    <AppCard padding="none" className="overflow-hidden">
+    <AppCard padding="none" interactive className="overflow-hidden">
       <button
         type="button"
-        className="flex w-full gap-3 p-2.5 text-left"
+        className="flex w-full gap-3 p-3 text-left"
         onClick={() => router.push(`/danie/${dish.id}`)}
       >
         <div className="relative size-[88px] shrink-0 overflow-hidden rounded-lg bg-accent-light">
@@ -35,7 +35,9 @@ export function DishCard({
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <p className="font-semibold leading-snug">{dish.name}</p>
+            <p className="font-semibold leading-snug text-text-primary">
+              {dish.name}
+            </p>
             {dish.isDaily ? (
               <AppBadge variant="error" className="shrink-0">
                 Danie dnia
@@ -50,7 +52,7 @@ export function DishCard({
           </p>
         </div>
       </button>
-      <div className="px-2.5 pb-2.5">
+      <div className="px-3 pb-3">
         <AppButton
           size="sm"
           fullWidth
