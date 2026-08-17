@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { AUTH_STORAGE_KEY, MOCK_OTP_CODE } from "@/lib/constants";
+import { createJSONStorage, persist } from "zustand/middleware";
+import {
+  AUTH_HYDRATION_TIMEOUT_MS,
+  AUTH_STORAGE_KEY,
+  MOCK_OTP_CODE,
+} from "@/lib/constants";
 import type { AuthUser } from "@/lib/types";
 
 export const mockUserTemplate: Omit<AuthUser, "phone"> = {
@@ -24,6 +28,13 @@ type AuthState = {
   logout: () => void;
   updateProfile: (patch: Partial<AuthUser>) => void;
 };
+
+function clientStorage() {
+  if (typeof window === "undefined") {
+    throw new Error("ssr");
+  }
+  return window.localStorage;
+}
 
 export const useAuth = create<AuthState>()(
   persist(
@@ -69,24 +80,56 @@ export const useAuth = create<AuthState>()(
     }),
     {
       name: AUTH_STORAGE_KEY,
+      storage: createJSONStorage(clientStorage),
+      skipHydration: true,
       partialize: (state) => ({
         user: state.user,
         isAuthenticated: state.isAuthenticated,
         pendingPhone: state.pendingPhone,
         pendingLoyaltyCard: state.pendingLoyaltyCard,
       }),
-      onRehydrateStorage: () => () => {
-        useAuth.setState({ hydrated: true });
-      },
     },
   ),
 );
 
-export function useAuthHydration() {
+function markHydrated() {
+  useAuth.setState({ hydrated: true });
+}
+
+export function useAuthReady() {
+  const hydrated = useAuth((s) => s.hydrated);
+  const [timedOut, setTimedOut] = useState(false);
+
   useEffect(() => {
-    const mark = () => useAuth.setState({ hydrated: true });
-    const unsub = useAuth.persist.onFinishHydration(mark);
-    if (useAuth.persist.hasHydrated()) mark();
-    return unsub;
+    const persistApi = useAuth.persist;
+    if (!persistApi) {
+      markHydrated();
+      return;
+    }
+
+    const unsub = persistApi.onFinishHydration(markHydrated);
+
+    try {
+      const result = persistApi.rehydrate();
+      if (result && typeof result.then === "function") {
+        Promise.resolve(result).catch(() => markHydrated());
+      }
+    } catch {
+      markHydrated();
+    }
+
+    if (persistApi.hasHydrated()) markHydrated();
+
+    const timeout = window.setTimeout(() => {
+      markHydrated();
+      setTimedOut(true);
+    }, AUTH_HYDRATION_TIMEOUT_MS);
+
+    return () => {
+      unsub?.();
+      window.clearTimeout(timeout);
+    };
   }, []);
+
+  return hydrated || timedOut;
 }

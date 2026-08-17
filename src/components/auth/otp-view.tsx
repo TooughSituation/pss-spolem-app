@@ -98,6 +98,11 @@ export function OtpView() {
 
     toast.success("Zalogowano pomyślnie");
     router.replace("/");
+    window.setTimeout(() => {
+      if (window.location.pathname !== "/") {
+        window.location.replace("/");
+      }
+    }, 500);
   };
 
   const resend = () => {

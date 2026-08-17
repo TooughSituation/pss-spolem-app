@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty v2 + Home v2 + **Promocje v2**. Nadal sam frontend + Zustand/localStorage.
+> **Status:** fundamenty v2 + Home v2 + Promocje v2. **Auth splash naprawiony** (hydracja + timeout 1s + SW nie blokuje App Router). Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -13,7 +13,7 @@ To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są
 | **Folder lokalny** | `C:\Users\user\pss-spolem-app` |
 | **GitHub** | https://github.com/TooughSituation/pss-spolem-app |
 | **Branch** | `main` |
-| **Live preview** | https://pss-spolem-app-toough-situation.vercel.app |
+| **Live preview** | https://pss-spolem-app-toough-situation.vercel.app (alias: https://pss-spolem-app.vercel.app) |
 | **Vercel** | `toough-situation/pss-spolem-app` · auto-deploy z `main` |
 | **Dashboard** | https://vercel.com/toough-situation/pss-spolem-app |
 
@@ -33,7 +33,7 @@ Projekty są **w pełni odseparowane**. **Nie mieszać** `package.json`, `.env`,
 - Zustand + persist (`localStorage`) — **bez prawdziwego API**
 - Framer Motion, Lucide, `qrcode.react`
 - next-themes — **forced light mode** (dark na razie wyłączony)
-- PWA: `public/manifest.webmanifest` + `public/sw.js` + ikony
+- PWA: `public/manifest.webmanifest` + `public/sw.js` (v2: nie cachuje `/` ani RSC) + ikony
 - Język UI: **polski**
 - Design: paleta PSS Społem Białystok, font **Inter**, mobile-first `max-w-[430px]`
 
@@ -59,7 +59,7 @@ Logo na razie tekstowe: „PSS Społem / Białystok” (`src/components/brand/sp
 
 ## Auth (mock, tylko frontend)
 
-- Store: `src/lib/stores/auth.ts` · persist key **`pss-auth`**
+- Store: `src/lib/stores/auth.ts` · persist key **`pss-auth`** · `skipHydration` + ręczny `rehydrate()` + twardy timeout 1s (nie wolno wisieć na splashu)
 - API: `user`, `isAuthenticated`, `login(phone, code)`, `logout()`, `updateProfile()`
 - Ekrany: `/login` (telefon + opcjonalna karta), `/otp` (6 cyfr)
 - **Jedyny akceptowany kod: `123456`**
@@ -168,6 +168,7 @@ Stack: Next.js 15.5.23 App Router, TS, Tailwind v4, shadcn + DS, Zustand persist
 UI PL, mobile-first, light mode, Inter, paleta #0055A4
 Bottom nav: Home | Promocje | Gastronomia | Sklepy | Profil
 Auth mock: /login /otp · kod 123456 · persist pss-auth
+        hydracja: skipHydration + timeout 1s — splash nie może wisieć
 Top Bar stały na Main. Profil: dane + punkty + wylogowanie.
 
 Home v2: greeting, PointsCard+QR, BannerCarousel, dynamiczne sekcje

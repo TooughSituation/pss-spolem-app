@@ -61,6 +61,11 @@ export function LoginView() {
         description: "W wersji testowej użyj kodu 123456.",
       });
       router.push("/otp");
+      window.setTimeout(() => {
+        if (window.location.pathname !== "/otp") {
+          window.location.assign("/otp");
+        }
+      }, 500);
     }, 450);
   };
 

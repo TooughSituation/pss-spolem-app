@@ -1,22 +1,14 @@
-const CACHE = "spolem-shell-v1";
-const PRECACHE = ["/", "/oferta", "/promocje", "/lista", "/sklepy", "/profil"];
+const CACHE = "spolem-shell-v2";
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches
-      .open(CACHE)
-      .then((cache) => cache.addAll(PRECACHE))
-      .then(() => self.skipWaiting()),
-  );
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) =>
-        Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))),
-      )
+      .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
       .then(() => self.clients.claim()),
   );
 });
@@ -24,13 +16,32 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  if (url.pathname.startsWith("/_next/")) return;
+  if (url.searchParams.has("_rsc")) return;
+  if (request.mode === "navigate") return;
+  if (request.headers.get("RSC")) return;
+  if (request.headers.get("Next-Router-State-Tree")) return;
+
+  const isStatic =
+    url.pathname.startsWith("/icons/") ||
+    url.pathname.startsWith("/images/") ||
+    /\.(png|jpg|jpeg|gif|webp|svg|ico|woff2?|webmanifest)$/i.test(url.pathname);
+
+  if (!isStatic) return;
+
   event.respondWith(
     fetch(request)
       .then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE).then((cache) => cache.put(request, copy));
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE).then((cache) => cache.put(request, copy));
+        }
         return response;
       })
-      .catch(() => caches.match(request).then((cached) => cached || caches.match("/"))),
+      .catch(() => caches.match(request)),
   );
 });

@@ -7,3 +7,4 @@ export const OTP_RESEND_SECONDS = 45;
 export const OTP_LENGTH = 6;
 
 export const AUTH_STORAGE_KEY = "pss-auth";
+export const AUTH_HYDRATION_TIMEOUT_MS = 1000;

@@ -2,11 +2,12 @@
 
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { LoginView } from "@/components/auth/login-view";
 import { AppTopBar } from "@/components/design-system/app-top-bar";
 import { AppSkeleton } from "@/components/design-system/app-skeleton";
 import { BottomTabBar } from "@/components/design-system/bottom-tab-bar";
 import { SpolemMark } from "@/components/brand/spolem-mark";
-import { useAuth, useAuthHydration } from "@/lib/stores/auth";
+import { useAuth, useAuthReady } from "@/lib/stores/auth";
 import {
   isAuthRoute,
   isFullscreenRoute,
@@ -17,17 +18,15 @@ import { cn } from "@/lib/utils";
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const hydrated = useAuth((s) => s.hydrated);
-  const isAuthenticated = useAuth((s) => s.isAuthenticated);
-
-  useAuthHydration();
+  const ready = useAuthReady();
+  const isAuthenticated = useAuth((s) => s.isAuthenticated && Boolean(s.user));
 
   const authScreen = isAuthRoute(pathname);
   const publicScreen = isPublicRoute(pathname);
   const fullscreen = isFullscreenRoute(pathname);
 
   useEffect(() => {
-    if (!hydrated) return;
+    if (!ready) return;
     if (!isAuthenticated && !publicScreen) {
       router.replace("/login");
       return;
@@ -35,15 +34,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     if (isAuthenticated && authScreen) {
       router.replace("/");
     }
-  }, [authScreen, hydrated, isAuthenticated, publicScreen, router]);
+  }, [authScreen, isAuthenticated, publicScreen, ready, router]);
 
-  const waitingForSession = !hydrated;
-  const blockingRedirect =
-    hydrated &&
-    ((!isAuthenticated && !publicScreen) || (isAuthenticated && authScreen));
+  const showChrome = ready && isAuthenticated && !authScreen && !fullscreen;
 
-  const showChrome = hydrated && isAuthenticated && !authScreen && !fullscreen;
-  const showNav = showChrome;
+  let content = children;
+  if (!ready) {
+    content = <SplashScreen />;
+  } else if (!isAuthenticated && !publicScreen) {
+    content = <LoginView />;
+  }
 
   return (
     <div className="min-h-dvh bg-primary-dark md:flex md:items-center md:justify-center md:p-6">
@@ -53,19 +53,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         )}
       >
         {showChrome ? <AppTopBar /> : null}
-        <div
-          className={cn(
-            "flex-1 overflow-y-auto",
-            showNav && "pb-nav",
-          )}
-        >
-          {waitingForSession || blockingRedirect ? (
-            <SplashScreen />
-          ) : (
-            children
-          )}
+        <div className={cn("flex-1 overflow-y-auto", showChrome && "pb-nav")}>
+          {content}
         </div>
-        {showNav ? <BottomTabBar /> : null}
+        {showChrome ? <BottomTabBar /> : null}
       </div>
     </div>
   );
