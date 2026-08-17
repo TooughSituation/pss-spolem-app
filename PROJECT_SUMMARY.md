@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty v2 + Home v2 + Promocje v2 + **Sklepy v2** (Leaflet/OSM, Białystok). Auth splash naprawiony. Nadal sam frontend + Zustand/localStorage.
+> **Status:** fundamenty + Home + Promocje + Sklepy + **Gastronomia v1** (menu, koszyk, checkout mock). Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -81,7 +81,7 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 | Home | `/` | ✅ greeting, karta punktów + QR 160px, carousel, 5 sekcji z mocka, pull-to-refresh |
 | Promocje | `/promocje` | ✅ chipsy grup, siatka 2 kol., search, filtry, % rabatu |
 | Gazetka | `/promocje/gazetka` | ✅ fullscreen |
-| Gastronomia | `/gastronomia` | 🔶 placeholder |
+| Gastronomia | `/gastronomia` | ✅ kategorie, dania dnia, koszyk, checkout, status |
 | Sklepy | `/sklepy` | ✅ Leaflet/OSM, 10 placówek Białystok, filtry, lista, szczegóły |
 | Profil | `/profil` | ✅ dane, punkty, edycja, wylogowanie |
 | Ustawienia | `/ustawienia` | ✅ prosta edycja imienia |
@@ -89,7 +89,10 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 | Oferta / produkt stary | `/oferta`, `/oferta/[id]` | ✅ zostaje |
 | Lista | `/lista` | ✅ istnieje, **nie ma w tabach** |
 | Skaner / zamów | `/skanuj`, `/zamow` | ✅ |
-| Placeholdery | `/produkt/[id]`, `/danie/[id]`, `/checkout`, `/zamowienie/[id]` | 🔶 Coming soon |
+| Danie | `/danie/[id]` | ✅ dodatki, uwagi, dodaj do koszyka |
+| Checkout | `/checkout` | ✅ adres, slot, płatność mock |
+| Status zamówienia | `/zamowienie/[id]` | ✅ Przyjęte → Dostarczone (czas) |
+| Placeholdery | `/produkt/[id]` | 🔶 Coming soon |
 | Legal | `/regulamin`, `/polityka-prywatnosci`, `/kontakt` | ✅ publiczne |
 
 ## Struktura
@@ -111,7 +114,7 @@ src/lib/
 public/                       # manifest, sw.js, icons/, images/
 ```
 
-Klucze persist: `pss-auth` (sesja), `pss-user` (extras), `pss-shopping-list`, `pss-cart`.
+Klucze persist: `pss-auth`, `pss-user`, `pss-shopping-list`, `pss-cart` (sklep), `pss-gastro-cart` (stołówka).
 
 ## Deploy
 
@@ -126,20 +129,16 @@ Build lokalny (`npm run build`) przechodzi.
 
 ## Co jest gotowe / co dalej
 
-**Zrobione:** DS, Auth, Home v2, Promocje v2, **Sklepy v2**.
+**Zrobione:** DS, Auth, Home, Promocje, Sklepy, **Gastronomia**.
 
-**Home (`/`):** greeting, PointsCard+QR, carousel, dynamiczne sekcje.
+**Gastronomia:** 8 kategorii, 24 dania (6 „danie dnia”). Koszyk `pss-gastro-cart` (osobny od koszyka sklepu). Checkout lokalny: adresy + slot + BLIK/karta/przy odbiorze (bez prawdziwej płatności). Status `/zamowienie/[id]` liczony z czasu (mock). Badge na zakładce Gastronomia.
 
-**Promocje (`/promocje`):** chipsy grup, search, filtry, siatka, % rabatu.
-
-**Sklepy (`/sklepy`):** react-leaflet + OpenStreetMap (bez klucza API). 10 placówek w Białymstoku (6 sklepów + 4 bary). Filtry: Wszystkie / Sklepy / Bary + „Otwarte teraz”. Lista po odległości, Nawiguj (Google Maps), Zadzwoń. Szczegóły `/sklepy/[id]`. Dane: `src/lib/data/stores.ts`.
-
-**Następny krok (rekomendacja):** Gastronomia albo rozbudowa lojalności / e-bonów.
+**Następny krok (rekomendacja):** Lojalność / e-bony.
 
 Dalsze etapy (później):
 
-- [ ] Gastronomia (menu, danie, zamówienie)
 - [ ] Lojalność / e-bony
+- [ ] Prawdziwe płatności / status realtime
 - [ ] Prawdziwe API + SMS
 - [ ] Integracja „Społem znaczy razem”
 - [ ] Prawdziwa geolokalizacja
@@ -155,7 +154,7 @@ Dalsze etapy (później):
 5. **Design:** mobile-first, ramka telefonu, paleta `#0055A4`, Inter, light only
 6. **Deploy:** `git push origin main` (Vercel podpięty)
 7. **Język:** polski
-8. **Kolejny krok:** Gastronomia albo rozbudowa lojalności / e-bonów
+8. **Kolejny krok:** Lojalność / e-bony
 
 ### Wklejka kontekstowa (krótka)
 
@@ -177,13 +176,14 @@ Home v2: greeting, PointsCard+QR, BannerCarousel, dynamiczne sekcje
 Promocje v2: chipsy grup, search, filtry, siatka 2 kol., % rabatu
         dane: banners.ts, home-sections.ts, promotion-groups.ts
 
-Ekrany: /login /otp / /promocje /gastronomia /sklepy /profil /ustawienia
-        /oferta /oferta/[id] /promocje/gazetka /lista /lojalnosc
-        /skanuj /zamow + placeholdery /produkt /danie /checkout /zamowienie
+Ekrany: /login /otp / /promocje /gastronomia /danie/[id] /checkout /zamowienie/[id]
+        /sklepy /sklepy/[id] /profil /ustawienia /oferta /oferta/[id]
+        /promocje/gazetka /lista /lojalnosc /skanuj /zamow
 
 Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
-Sklepy v2: Leaflet/OSM, 10 placówek Białystok (sklep/bar), filtry, /sklepy/[id]
-Brak backendu. KOLEJNY KROK: Gastronomia albo lojalność / e-bony.
+Sklepy v2: Leaflet/OSM, 10 placówek Białystok
+Gastronomia: 8 kat. / 24 dania, pss-gastro-cart, /danie /checkout /zamowienie
+Brak backendu. KOLEJNY KROK: lojalność / e-bony.
 ```
 
 ## Kontekst developera

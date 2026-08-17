@@ -1,12 +1,7 @@
-import { ComingSoon } from "@/components/placeholders/coming-soon";
+import { CheckoutForm } from "@/components/gastronomia/checkout-form";
 
-export const metadata = { title: "Kasa" };
+export const metadata = { title: "Zamówienie" };
 
 export default function Page() {
-  return (
-    <ComingSoon
-      title="Kasa"
-      description="Podsumowanie zamówienia i płatność będą dostępne po podłączeniu koszyka."
-    />
-  );
+  return <CheckoutForm />;
 }

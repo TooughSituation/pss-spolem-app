@@ -166,6 +166,78 @@ export type HomeSection = {
   items: string[];
 };
 
+export type GastroCategoryId =
+  | "sniadania"
+  | "zupy"
+  | "dania-glowne"
+  | "nalesniki"
+  | "zestawy"
+  | "dodatki"
+  | "desery"
+  | "napoje-gastro";
+
+export type GastroCategory = {
+  id: GastroCategoryId;
+  name: string;
+  emoji: string;
+};
+
+export type DishAddon = {
+  id: string;
+  name: string;
+  price: number;
+  group: string;
+  type: "checkbox" | "radio";
+};
+
+export type Dish = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  categoryId: GastroCategoryId;
+  isDaily: boolean;
+  addons: DishAddon[];
+};
+
+export type GastroCartItem = {
+  lineId: string;
+  dishId: string;
+  qty: number;
+  addonIds: string[];
+  notes: string;
+  unitPrice: number;
+};
+
+export type DeliveryAddress = {
+  id: string;
+  label: string;
+  street: string;
+  city: string;
+};
+
+export type GastroPayment = "blik" | "karta" | "przy-odbiorze";
+
+export type GastroOrderStatus =
+  | "przyjete"
+  | "przygotowywane"
+  | "w-drodze"
+  | "dostarczone";
+
+export type GastroOrder = {
+  id: string;
+  createdAt: string;
+  eta: string;
+  status: GastroOrderStatus;
+  items: GastroCartItem[];
+  total: number;
+  addressId: string;
+  addressLabel: string;
+  slot: string;
+  payment: GastroPayment;
+};
+
 export type AuthUser = {
   id: string;
   phone: string;

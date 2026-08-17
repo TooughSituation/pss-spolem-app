@@ -1,12 +1,12 @@
-import { ComingSoon } from "@/components/placeholders/coming-soon";
+import { OrderStatus } from "@/components/gastronomia/order-status";
 
-export const metadata = { title: "Zamówienie" };
+export const metadata = { title: "Status zamówienia" };
 
-export default function Page() {
-  return (
-    <ComingSoon
-      title="Zamówienie"
-      description="Status i szczegóły zamówienia pojawią się w kolejnym etapie."
-    />
-  );
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  return <OrderStatus id={id} />;
 }

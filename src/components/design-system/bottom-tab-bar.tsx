@@ -9,6 +9,7 @@ import {
   UserRound,
   UtensilsCrossed,
 } from "lucide-react";
+import { gastroCount, useGastroCart } from "@/lib/stores/gastro-cart";
 import { cn } from "@/lib/utils";
 
 const tabs = [
@@ -30,7 +31,10 @@ const tabs = [
     label: "Gastronomia",
     icon: UtensilsCrossed,
     match: (p: string) =>
-      p.startsWith("/gastronomia") || p.startsWith("/danie"),
+      p.startsWith("/gastronomia") ||
+      p.startsWith("/danie") ||
+      p.startsWith("/checkout") ||
+      p.startsWith("/zamowienie"),
   },
   {
     href: "/sklepy",
@@ -46,14 +50,13 @@ const tabs = [
       p.startsWith("/profil") ||
       p.startsWith("/lojalnosc") ||
       p.startsWith("/ustawienia") ||
-      p.startsWith("/zamow") ||
-      p.startsWith("/checkout") ||
-      p.startsWith("/zamowienie"),
+      p.startsWith("/zamow"),
   },
 ] as const;
 
 export function BottomTabBar() {
   const pathname = usePathname();
+  const cartCount = useGastroCart((s) => gastroCount(s.items));
 
   return (
     <nav
@@ -75,7 +78,14 @@ export function BottomTabBar() {
                 )}
                 aria-current={active ? "page" : undefined}
               >
-                <Icon className={cn("size-5", active && "stroke-[2.4]")} />
+                <span className="relative">
+                  <Icon className={cn("size-5", active && "stroke-[2.4]")} />
+                  {tab.href === "/gastronomia" && cartCount > 0 ? (
+                    <span className="absolute -right-2.5 -top-1.5 grid h-4 min-w-4 place-items-center rounded-full bg-error px-1 text-[10px] font-bold text-white">
+                      {cartCount}
+                    </span>
+                  ) : null}
+                </span>
                 {tab.label}
                 {active ? (
                   <span className="absolute top-1.5 h-1 w-1 rounded-full bg-primary" />
