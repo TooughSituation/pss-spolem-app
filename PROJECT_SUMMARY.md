@@ -1,8 +1,8 @@
 # Projekt: pss-spolem-app — PWA B2C PSS Społem
 
-> Ostatnia aktualizacja: **14.08.2026**
+> Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** kompletny mockup v1 — wszystkie ekrany, PWA, deploy na Vercel
+> **Status:** fundamenty v2 — niebieski Design System, mock Auth (OTP), Top Bar + 5 zakładek, profil. Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -12,7 +12,7 @@ To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są
 |-------|---------|
 | **Folder lokalny** | `C:\Users\user\pss-spolem-app` |
 | **GitHub** | https://github.com/TooughSituation/pss-spolem-app |
-| **Branch** | `main` @ `c48650e` |
+| **Branch** | `main` |
 | **Live preview** | https://pss-spolem-app-toough-situation.vercel.app |
 | **Vercel** | `toough-situation/pss-spolem-app` · auto-deploy z `main` |
 | **Dashboard** | https://vercel.com/toough-situation/pss-spolem-app |
@@ -24,57 +24,94 @@ To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są
 | **pss-spolem-app** (ten) | `C:\Users\user\pss-spolem-app` | `TooughSituation/pss-spolem-app` · `main` | `toough-situation/pss-spolem-app` |
 | akwen-web | `C:\Users\user\akwen-web` | `TooughSituation/akwen-web` · `master` | `toough-situation/akwen-web` |
 
-Projekty są **w pełni odseparowane**. Sesja, która stworzyła mockup, była otwarta w workspace `akwen-web` — kod PSS powstał w sibling folderze. **Nie mieszać** `package.json`, `.env`, `node_modules`, commitów.
+Projekty są **w pełni odseparowane**. **Nie mieszać** `package.json`, `.env`, `node_modules`, commitów. Workspace GrokWeb bywa otwarty w `akwen-web` — kod PSS jest w sibling folderze.
 
 ## Stack
 
 - Next.js **15.5.23** (App Router, Turbopack) + React 19 + TypeScript
-- Tailwind CSS v4 + shadcn/ui (radix-nova) + Lucide
-- Zustand + persist (`localStorage`) — bez backendu
-- Framer Motion + CSS transitions
-- next-themes (jasny / ciemny / system)
-- `qrcode.react` — wirtualna karta lojalnościowa
+- Tailwind CSS v4 + shadcn/ui + własne komponenty Design System
+- Zustand + persist (`localStorage`) — **bez prawdziwego API**
+- Framer Motion, Lucide, `qrcode.react`
+- next-themes — **forced light mode** (dark na razie wyłączony)
 - PWA: `public/manifest.webmanifest` + `public/sw.js` + ikony
 - Język UI: **polski**
-- Design: zieleń spółdzielcza `#009241`, krem, czerwień `#C8102E`, pomarańcz świeżości; font Plus Jakarta Sans
+- Design: paleta PSS Społem Białystok, font **Inter**, mobile-first `max-w-[430px]`
 
-## Stan (v1 mockup)
+## Design System (obowiązujący)
+
+| Token | Hex |
+|-------|-----|
+| Primary | `#0055A4` |
+| Primary Dark | `#003366` |
+| Background | `#FFFFFF` |
+| Accent Light | `#E8F1FA` |
+| Text Primary | `#1A1A2E` |
+| Text Secondary | `#5A5A7A` |
+| Success | `#28A745` |
+| Error | `#DC3545` |
+| Warning | `#FFC107` |
+
+Pliki: `src/lib/theme/colors.ts`, `src/lib/theme/typography.ts`, `src/app/globals.css` (CSS variables → Tailwind).
+
+Komponenty: `src/components/design-system/` — AppButton, AppCard, AppBadge, AppChip/AppTag, AppInput, AppEmptyState, AppSkeleton, AppTopBar, BottomTabBar.
+
+Logo na razie tekstowe: „PSS Społem / Białystok” (`src/components/brand/spolem-mark.tsx`).
+
+## Auth (mock, tylko frontend)
+
+- Store: `src/lib/stores/auth.ts` · persist key **`pss-auth`**
+- API: `user`, `isAuthenticated`, `login(phone, code)`, `logout()`, `updateProfile()`
+- Ekrany: `/login` (telefon + opcjonalna karta), `/otp` (6 cyfr)
+- **Jedyny akceptowany kod: `123456`**
+- Po sukcesie mock user:
+  `{ id: "1", phone, name: "Anna", loyaltyCardNumber: "1234567890", pointsBalance: 1250 }`
+- Niezalogowany na trasach Main → `/login`
+- Stary klucz persist `pss-user` zostaje dla extras (powiadomienia, ulubiony sklep, redeem)
+
+## Nawigacja i trasy
+
+**Bottom tabs (dokładnie 5):** Home `/` · Promocje `/promocje` · Gastronomia `/gastronomia` · Sklepy `/sklepy` · Profil `/profil`
+
+AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 
 | Moduł | Ścieżka | Stan |
 |-------|---------|------|
-| Home | `/` | ✅ punkty, skróty, promocje, gazetka, kategorie, sklepy |
-| Oferta | `/oferta` | ✅ 43 produkty, search, kategorie, filtry |
-| Produkt | `/oferta/[id]` | ✅ SSG, lista + koszyk |
-| Promocje | `/promocje` | ✅ karty + wejście do gazetki |
-| Gazetka | `/promocje/gazetka` | ✅ swipe, dodawanie do listy |
-| Lista zakupów | `/lista` | ✅ ręcznie / katalog, qty, share |
-| Sklepy | `/sklepy` | ✅ mapa SVG Warszawa + 8 sklepów |
-| Sklep | `/sklepy/[id]` | ✅ godziny, tel, nawigacja, zamów |
-| Lojalność | `/lojalnosc` | ✅ karta + QR, punkty, nagrody, historia |
-| Profil | `/profil` | ✅ zamówienia, powiadomienia, motyw |
-| Skaner | `/skanuj` | ✅ mock kamery → EAN |
-| Zamów | `/zamow` | ✅ click & collect / dostawa (lokalnie) |
-| PWA + dark mode | — | ✅ |
-| Backend / auth | — | ⏳ brak — wszystko w `localStorage` |
-
-Dolna nawigacja: **Home · Promocje · Lista · Sklepy · Profil**.
+| Login | `/login` | ✅ mock SMS |
+| OTP | `/otp` | ✅ tylko `123456` |
+| Home | `/` | 🔶 stara treść + nowy DS/auth — **następny krok do przebudowy** |
+| Promocje | `/promocje` | ✅ stare karty, nowa kolorystyka |
+| Gazetka | `/promocje/gazetka` | ✅ fullscreen |
+| Gastronomia | `/gastronomia` | 🔶 placeholder |
+| Sklepy | `/sklepy` | ✅ mapa + lista |
+| Profil | `/profil` | ✅ dane, punkty, edycja, wylogowanie |
+| Ustawienia | `/ustawienia` | ✅ prosta edycja imienia |
+| Lojalność | `/lojalnosc` | ✅ karta + QR, punkty z AuthStore |
+| Oferta / produkt stary | `/oferta`, `/oferta/[id]` | ✅ zostaje |
+| Lista | `/lista` | ✅ istnieje, **nie ma w tabach** |
+| Skaner / zamów | `/skanuj`, `/zamow` | ✅ |
+| Placeholdery | `/produkt/[id]`, `/danie/[id]`, `/checkout`, `/zamowienie/[id]` | 🔶 Coming soon |
+| Legal | `/regulamin`, `/polityka-prywatnosci`, `/kontakt` | ✅ publiczne |
 
 ## Struktura
 
 ```
-src/app/                 # routing App Router
+src/app/                      # routing App Router
 src/components/
-  layout/                # AppShell, BottomNav, ScreenHeader
+  design-system/              # AppButton, AppCard, AppTopBar, BottomTabBar…
+  auth/                       # LoginView, OtpView
+  layout/                     # AppShell (+ AuthGate), ScreenHeader
   home/ catalog/ promos/ list/ stores/ loyalty/ profile/ scan/ order/
-  product/ brand/ ui/
+  gastronomia/ legal/ placeholders/ brand/ ui/
 src/lib/
-  data/                  # products, stores, promotions, user
-  stores/                # Zustand: shopping-list, cart, user
-  format.ts types.ts
-public/                  # manifest, sw.js, icons/, images/
+  theme/                      # colors.ts, typography.ts
+  auth/routes.ts              # public / auth / fullscreen
+  stores/                     # auth, user, cart, shopping-list
+  data/                       # products, stores, promotions, user
+  constants.ts types.ts
+public/                       # manifest, sw.js, icons/, images/
 ```
 
-Kluczowe store: `pss-shopping-list`, `pss-cart`, `pss-user` (klucze persist).
+Klucze persist: `pss-auth` (sesja), `pss-user` (extras), `pss-shopping-list`, `pss-cart`.
 
 ## Deploy
 
@@ -85,25 +122,34 @@ npm run dev          # http://localhost:3000
 git push origin main # auto-deploy Vercel
 ```
 
-Build lokalny (`npm run build`) przechodzi — 66 stron statycznych.
+Build lokalny (`npm run build`) przechodzi.
 
-## Dalszy rozwój (kolejne etapy)
+## Co jest gotowe / co dalej
 
-- [ ] Backend + auth (SMS / numer karty)
-- [ ] Integracja „Społem znaczy razem” (saldo, paragony, bony)
-- [ ] Prawdziwa geolokalizacja + Mapbox/Google
+**Zrobione (ten krok):** DS niebieski, Top Bar, 5 tabów, mock OTP, ochrona tras, profil, placeholdery przyszłych ekranów.
+
+**Następny krok — Home (`/`):** przebudować ekran główny pod oficjalną specyfikację, korzystając z `useAuth` + komponentów DS. Nie ruszać auth/shell, o ile spec tego nie wymaga.
+
+Dalsze etapy (później):
+
+- [ ] Przebudowa Home
+- [ ] Gastronomia (menu, danie, zamówienie)
+- [ ] Prawdziwe API + SMS
+- [ ] Integracja „Społem znaczy razem”
+- [ ] Geo + prawdziwa mapa
 - [ ] Gazetki z CMS / PDF
 - [ ] Skaner `BarcodeDetector` + EAN z ERP
-- [ ] Zamówienia: stany sklepu, płatność, push
 
 ## Szybki start dla GrokWeb (kolejna sesja)
 
 1. **Otwórz folder** `C:\Users\user\pss-spolem-app` — **nie** `akwen-web`
 2. **Repo:** `TooughSituation/pss-spolem-app` · `main` · live jak wyżej
 3. **To mockup B2C PWA** — stan w Zustand/localStorage, brak API
-4. **Design:** mobile-first, ramka telefonu na desktopie, kolory PSS
-5. **Deploy:** `git push origin main` (Vercel podpięty)
-6. **Język:** polski
+4. **Auth mock:** kod SMS `123456` → user Anna, 1250 pkt
+5. **Design:** mobile-first, ramka telefonu, paleta `#0055A4`, Inter, light only
+6. **Deploy:** `git push origin main` (Vercel podpięty)
+7. **Język:** polski
+8. **Kolejny krok:** przebudowa Home
 
 ### Wklejka kontekstowa (krótka)
 
@@ -114,14 +160,18 @@ GitHub: https://github.com/TooughSituation/pss-spolem-app · main
 Live:   https://pss-spolem-app-toough-situation.vercel.app
 Vercel: toough-situation/pss-spolem-app · auto-deploy z main
 
-Stack: Next.js 15.5.23 App Router, TS, Tailwind v4, shadcn, Zustand persist, next-themes, PWA
-UI PL, mobile-first, bottom nav: Home | Promocje | Lista | Sklepy | Profil
+Stack: Next.js 15.5.23 App Router, TS, Tailwind v4, shadcn + DS, Zustand persist, PWA
+UI PL, mobile-first, light mode, Inter, paleta #0055A4
+Bottom nav: Home | Promocje | Gastronomia | Sklepy | Profil
+Auth mock: /login /otp · kod 123456 · persist pss-auth
+Top Bar stały na Main. Profil: dane + punkty + wylogowanie.
 
-Ekrany: / /oferta /oferta/[id] /promocje /promocje/gazetka /lista
-        /sklepy /sklepy/[id] /lojalnosc /profil /skanuj /zamow
+Ekrany: /login /otp / /promocje /gastronomia /sklepy /profil /ustawienia
+        /oferta /oferta/[id] /promocje/gazetka /lista /lojalnosc
+        /skanuj /zamow + placeholdery /produkt /danie /checkout /zamowienie
 
-Dane mock: src/lib/data/*  · store: src/lib/stores/*
-Brak backendu. Kolejny etap: auth, lojalność PSS, geo, prawdziwy skaner/ERP.
+Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
+Brak backendu. KOLEJNY KROK: przebudowa Home pod oficjalną specyfikację.
 ```
 
 ## Kontekst developera
