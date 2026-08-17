@@ -26,7 +26,7 @@ export const useCart = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
-      storeId: "mokotow",
+      storeId: "centrum",
       fulfillment: "click-collect",
       slot: "16:00–16:30",
       orders: seedOrders,

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getStore, stores } from "@/lib/data/stores";
-import { StoreDetailView } from "@/components/stores/store-detail-view";
+import { StoreDetails } from "@/components/stores/store-details";
 
 export function generateStaticParams() {
   return stores.map((s) => ({ id: s.id }));
@@ -23,5 +23,5 @@ export default async function Page({
   const { id } = await params;
   const store = getStore(id);
   if (!store) notFound();
-  return <StoreDetailView store={store} />;
+  return <StoreDetails store={store} />;
 }

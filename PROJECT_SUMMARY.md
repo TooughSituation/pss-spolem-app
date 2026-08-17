@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty v2 + Home v2 + Promocje v2. **Auth splash naprawiony** (hydracja + timeout 1s + SW nie blokuje App Router). Nadal sam frontend + Zustand/localStorage.
+> **Status:** fundamenty v2 + Home v2 + Promocje v2 + **Sklepy v2** (Leaflet/OSM, Białystok). Auth splash naprawiony. Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -82,7 +82,7 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 | Promocje | `/promocje` | ✅ chipsy grup, siatka 2 kol., search, filtry, % rabatu |
 | Gazetka | `/promocje/gazetka` | ✅ fullscreen |
 | Gastronomia | `/gastronomia` | 🔶 placeholder |
-| Sklepy | `/sklepy` | ✅ mapa + lista |
+| Sklepy | `/sklepy` | ✅ Leaflet/OSM, 10 placówek Białystok, filtry, lista, szczegóły |
 | Profil | `/profil` | ✅ dane, punkty, edycja, wylogowanie |
 | Ustawienia | `/ustawienia` | ✅ prosta edycja imienia |
 | Lojalność | `/lojalnosc` | ✅ karta + QR, punkty z AuthStore |
@@ -126,21 +126,23 @@ Build lokalny (`npm run build`) przechodzi.
 
 ## Co jest gotowe / co dalej
 
-**Zrobione:** DS niebieski, Top Bar, 5 tabów, mock OTP, profil, Home v2, **Promocje v2**.
+**Zrobione:** DS, Auth, Home v2, Promocje v2, **Sklepy v2**.
 
-**Home (`/`):** `src/components/home/` — greeting, PointsCard+QR, carousel, dynamiczne sekcje, pull-to-refresh.
+**Home (`/`):** greeting, PointsCard+QR, carousel, dynamiczne sekcje.
 
-**Promocje (`/promocje`):** `src/components/promos/` — PromotionChips, SearchBar, PromotionFilters, PromotionProductCard. Grupy z `src/lib/data/promotion-groups.ts` (Hity, Marka własna, Wyprzedaż, Pieczywo, Nabiał, Chemia). Klik karty → `/oferta/[id]` (opis + „Dodaj do listy zakupów”). Gazetka nadal pod `/promocje/gazetka`.
+**Promocje (`/promocje`):** chipsy grup, search, filtry, siatka, % rabatu.
 
-**Następny krok (rekomendacja):** Sklepy/Mapa albo rozbudowa lojalności / karty punktów.
+**Sklepy (`/sklepy`):** react-leaflet + OpenStreetMap (bez klucza API). 10 placówek w Białymstoku (6 sklepów + 4 bary). Filtry: Wszystkie / Sklepy / Bary + „Otwarte teraz”. Lista po odległości, Nawiguj (Google Maps), Zadzwoń. Szczegóły `/sklepy/[id]`. Dane: `src/lib/data/stores.ts`.
+
+**Następny krok (rekomendacja):** Gastronomia albo rozbudowa lojalności / e-bonów.
 
 Dalsze etapy (później):
 
-- [ ] Sklepy / mapa albo lojalność
 - [ ] Gastronomia (menu, danie, zamówienie)
+- [ ] Lojalność / e-bony
 - [ ] Prawdziwe API + SMS
 - [ ] Integracja „Społem znaczy razem”
-- [ ] Geo + prawdziwa mapa
+- [ ] Prawdziwa geolokalizacja
 - [ ] Gazetki z CMS / PDF
 - [ ] Skaner `BarcodeDetector` + EAN z ERP
 
@@ -153,7 +155,7 @@ Dalsze etapy (później):
 5. **Design:** mobile-first, ramka telefonu, paleta `#0055A4`, Inter, light only
 6. **Deploy:** `git push origin main` (Vercel podpięty)
 7. **Język:** polski
-8. **Kolejny krok:** Sklepy/Mapa albo rozbudowa lojalności / karty punktów
+8. **Kolejny krok:** Gastronomia albo rozbudowa lojalności / e-bonów
 
 ### Wklejka kontekstowa (krótka)
 
@@ -180,7 +182,8 @@ Ekrany: /login /otp / /promocje /gastronomia /sklepy /profil /ustawienia
         /skanuj /zamow + placeholdery /produkt /danie /checkout /zamowienie
 
 Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
-Brak backendu. KOLEJNY KROK: Sklepy/Mapa albo rozbudowa lojalności.
+Sklepy v2: Leaflet/OSM, 10 placówek Białystok (sklep/bar), filtry, /sklepy/[id]
+Brak backendu. KOLEJNY KROK: Gastronomia albo lojalność / e-bony.
 ```
 
 ## Kontekst developera

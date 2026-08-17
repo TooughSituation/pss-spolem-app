@@ -8,7 +8,7 @@ export const defaultProfile: UserProfile = {
   cardNumber: "1234567890",
   points: 1250,
   memberSince: "2019-03-12",
-  favoriteStoreId: "mokotow",
+  favoriteStoreId: "centrum",
   notifications: {
     promotions: true,
     flyer: true,
@@ -96,7 +96,7 @@ export const rewards: Reward[] = [
 export const seedOrders: Order[] = [
   {
     id: "SP-24081",
-    storeId: "mokotow",
+    storeId: "centrum",
     createdAt: "2026-08-11T09:20:00",
     pickupAt: "2026-08-11T16:00:00",
     status: "odebrane",
@@ -111,7 +111,7 @@ export const seedOrders: Order[] = [
   },
   {
     id: "SP-24074",
-    storeId: "ochota",
+    storeId: "sloneczny",
     createdAt: "2026-08-13T14:05:00",
     pickupAt: "2026-08-14T17:30:00",
     status: "w-realizacji",
@@ -125,7 +125,7 @@ export const seedOrders: Order[] = [
   },
   {
     id: "SP-24061",
-    storeId: "mokotow",
+    storeId: "centrum",
     createdAt: "2026-07-30T11:40:00",
     pickupAt: "2026-07-30T18:00:00",
     status: "odebrane",

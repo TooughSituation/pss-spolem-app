@@ -47,9 +47,12 @@ export type Weekday =
   | "sobota"
   | "niedziela";
 
+export type StoreType = "store" | "bar";
+
 export type Store = {
   id: string;
   name: string;
+  type: StoreType;
   address: string;
   city: string;
   district: string;
