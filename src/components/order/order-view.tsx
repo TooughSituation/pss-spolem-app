@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { SafeImage } from "@/components/media/safe-image";
 import { toast } from "sonner";
 import { getProduct } from "@/lib/data/products";
 import { getStore, stores } from "@/lib/data/stores";
@@ -167,7 +167,7 @@ export function OrderView() {
                   className="flex items-center gap-3 rounded-2xl border bg-card p-2"
                 >
                   <div className="relative size-14 overflow-hidden rounded-xl">
-                    <Image src={p.image} alt="" fill className="object-cover" sizes="56px" />
+                    <SafeImage src={p.image} alt="" fill className="object-cover" sizes="56px" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-semibold">{p.name}</p>
@@ -218,7 +218,7 @@ export function OrderView() {
                 className="w-28 shrink-0 rounded-2xl border bg-card p-2 text-left"
               >
                 <div className="relative mb-1.5 h-16 overflow-hidden rounded-xl">
-                  <Image src={p.image} alt="" fill className="object-cover" sizes="112px" />
+                  <SafeImage src={p.image} alt="" fill className="object-cover" sizes="112px" />
                 </div>
                 <p className="line-clamp-2 text-[11px] font-semibold leading-tight">
                   {p.name}

@@ -133,6 +133,8 @@ Build lokalny (`npm run build`) przechodzi.
 
 **Logo:** oficjalny znak PSS Społem Białystok w Top Barze, na logowaniu, splashu, karcie członkowskiej, gazetce i ikonach PWA.
 
+**Zdjęcia:** lokalne pliki w `public/images/catalog/` (nie Unsplash). `SafeImage` z placeholderem gdy plik padnie.
+
 **Branding / polish:** karta członkowska z logo i chipem, jednolite karty (produkty / dania / sklepy / nagrody), CTA z hover/active, cieplejsze empty states, Inter, primary `#0055A4`.
 
 **Lista (`/lista`):** dodawanie ręczne i z Home/Promocji (`AddToListButton`), ilości, odhaczanie, grupy kategorii, Web Share / schowek. Wejście: ikona koszyka w Top Barze.
@@ -190,6 +192,8 @@ Gastronomia: 8 kat. / 24 dania, pss-gastro-cart, /danie /checkout /zamowienie
 Lojalność A1: pss-auth.pointsBalance + pss-loyalty
 Profil A2 + Lista zakupów (pss-shopping-list, dodawanie z Home/Promocji)
 Logo: public/logo/pss-spolem.png (+ white, mark) · SpolemMark w Top Bar / login / splash / karcie
+Zdjęcia: lokalne public/images/catalog/*.jpg · SafeImage + placeholder
+Mapa: Leaflet bez atrybucji w UI
 Branding: karta członkowska, belka Top Bar, gazetkowe bannery, spójne karty/CTA
 Brak backendu. KOLEJNY KROK: backend / płatności. Admin /admin niepriorytetowe.
 ```

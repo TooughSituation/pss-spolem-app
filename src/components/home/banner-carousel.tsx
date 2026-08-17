@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { SafeImage } from "@/components/media/safe-image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { HomeBanner } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -87,7 +87,7 @@ export function BannerSlide({ banner }: { banner: HomeBanner }) {
       href={banner.link}
       className="relative block h-40 w-full shrink-0 overflow-hidden"
     >
-      <Image
+      <SafeImage
         src={banner.image}
         alt={banner.title}
         fill

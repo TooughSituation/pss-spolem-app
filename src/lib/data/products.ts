@@ -10,7 +10,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "800 g",
     image:
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1509440159596-0249088772ff.jpg",
     isOwnBrand: true,
     isPromo: false,
     badge: "Marka PSS",
@@ -28,7 +28,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "6 × 55 g",
     image:
-      "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1555507036-ab1f4038808a.jpg",
     isOwnBrand: true,
     isPromo: true,
     oldPrice: 4.79,
@@ -46,7 +46,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "500 g",
     image:
-      "https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1585478259715-876acc5be8eb.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Miękki tost z mąki pełnoziarnistej. Świetny do tostera i kanapek.",
@@ -62,7 +62,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "4 × 70 g",
     image:
-      "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1555507036-ab794f27d2e9.jpg",
     isOwnBrand: false,
     isPromo: true,
     badge: "Promocja",
@@ -78,7 +78,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 l",
     image:
-      "https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1563636619-e9143da7973b.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Świeże mleko od sprawdzonych dostawców. Pasteryzowane, pełnotłuste.",
@@ -95,7 +95,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "200 g",
     image:
-      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1589985270826-4b7bb135bc9d.jpg",
     isOwnBrand: false,
     isPromo: true,
     badge: "Hit tygodnia",
@@ -112,7 +112,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "400 g",
     image:
-      "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1488477181946-6428a0291777.jpg",
     isOwnBrand: true,
     isPromo: true,
     oldPrice: 3.49,
@@ -128,7 +128,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "250 g",
     image:
-      "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1486297678162-eb2a19b0a32d.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Delikatna gouda w plastrach. Do kanapek i zapiekanek.",
@@ -144,7 +144,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "10 szt. L",
     image:
-      "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1518569656558-1f25e69d93d7.jpg",
     isOwnBrand: false,
     isPromo: true,
     oldPrice: 14.99,
@@ -162,7 +162,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "400 g",
     image:
-      "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1628088062854-d1870b4553da.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Kremowa śmietana do zup, sosów i deserów.",
@@ -178,7 +178,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "150 g",
     image:
-      "https://images.unsplash.com/photo-1524438418049-ab2acb7aa48f?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1524438418049-ab2acb7aa48f.jpg",
     isOwnBrand: true,
     isPromo: true,
     badge: "Marka PSS",
@@ -194,7 +194,7 @@ export const products: Product[] = [
     unit: "kg",
     weight: "ok. 500 g",
     image:
-      "https://images.unsplash.com/photo-1615937691194-97dbd3f3dc29?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1615937691194-97dbd3f3dc29.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Tradycyjna kiełbasa śląska z ladki mięsnej. Kroimy na życzenie.",
@@ -211,7 +211,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "500 g",
     image:
-      "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1604503468506-a8da13d82791.jpg",
     isOwnBrand: false,
     isPromo: true,
     badge: "−15%",
@@ -228,7 +228,7 @@ export const products: Product[] = [
     unit: "kg",
     weight: "ok. 1 kg",
     image:
-      "https://images.unsplash.com/photo-1603048297172-c92544798d5e?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1603048297172-c92544798d5e.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Karkówka na grilla i do pieczenia. Świeża dostawa codziennie rano.",
@@ -243,7 +243,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "250 g",
     image:
-      "https://images.unsplash.com/photo-1599599810694-b5b37304c041?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1599599810694-b5b37304c041.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Parówki z wysoką zawartością mięsa. Ulubione na szybki obiad.",
@@ -258,7 +258,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "500 g",
     image:
-      "https://images.unsplash.com/photo-1546470427-227c7369a1aa?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1546470427-227c7369a1aa.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Słodkie pomidory malinowe od polskich ogrodników.",
@@ -274,7 +274,7 @@ export const products: Product[] = [
     unit: "kg",
     weight: "1 kg",
     image:
-      "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1560806887-1e4cd0b6cbd6.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Chrupiące jabłka Ligol prosto z mazowieckich sadów.",
@@ -290,7 +290,7 @@ export const products: Product[] = [
     unit: "kg",
     weight: "ok. 1 kg",
     image:
-      "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1571771894821-ce9b6c11b08e.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Dojrzałe banany. Idealne na przekąskę i do owsianki.",
@@ -305,7 +305,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "500 g",
     image:
-      "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1449300079323-02e209d9d3a6.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Sezonowe ogórki gruntowe. Świetne do mizerii i sałatek.",
@@ -321,7 +321,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "2 kg",
     image:
-      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1518977676601-b53f82aba655.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Młode ziemniaki o cienkiej skórce. Gotowe w 15 minut.",
@@ -337,7 +337,7 @@ export const products: Product[] = [
     unit: "pęczek",
     weight: "ok. 400 g",
     image:
-      "https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1445282768818-728615cc910a.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Świeża marchew z nacią. Słodka, chrupiąca, lokalna.",
@@ -353,7 +353,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 główka",
     image:
-      "https://images.unsplash.com/photo-1622206151226-18ca2c9ab4a1?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1622206151226-18ca2c9ab4a1.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Chrupiąca sałata lodowa. Przechowuj w lodówce do 5 dni.",
@@ -368,7 +368,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 l",
     image:
-      "https://images.unsplash.com/photo-1576673442511-7e39b6545c87?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1576673442511-7e39b6545c87.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Tłoczony sok z polskich jabłek, bez dodatku cukru.",
@@ -384,7 +384,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "280 g",
     image:
-      "https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1471943311424-646960669fbc.jpg",
     isOwnBrand: true,
     isPromo: true,
     oldPrice: 7.49,
@@ -400,7 +400,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "400 g",
     image:
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1586201375761-83865001e31c.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Prażona kasza gryczana. Klasyka polskiej kuchni.",
@@ -416,7 +416,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 l",
     image:
-      "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1474979266404-7eaacbcd87c5.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Tłoczony olej rzepakowy do smażenia i sałatek.",
@@ -431,7 +431,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1,5 l",
     image:
-      "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1548839140-29a749e1cf4d.jpg",
     isOwnBrand: false,
     isPromo: true,
     oldPrice: 2.49,
@@ -449,7 +449,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 l",
     image:
-      "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1600271886742-f049cd451bba.jpg",
     isOwnBrand: false,
     isPromo: true,
     badge: "−21%",
@@ -465,7 +465,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "100 × 1,4 g",
     image:
-      "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1556679343-c7306c1976bc.jpg",
     isOwnBrand: false,
     isPromo: true,
     oldPrice: 12.49,
@@ -481,7 +481,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "250 g",
     image:
-      "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1559056199-641a0ac8b55e.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Aromatyczna kawa mielona o średnim paleniu.",
@@ -496,7 +496,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 l",
     image:
-      "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1585421514738-01798e348b17.jpg",
     isOwnBrand: false,
     isPromo: true,
     oldPrice: 8.49,
@@ -513,7 +513,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "3 kg",
     image:
-      "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1610557892470-55d9e80c0bce.jpg",
     isOwnBrand: false,
     isPromo: true,
     badge: "Wyprzedaż",
@@ -529,7 +529,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "8 rolek",
     image:
-      "https://images.unsplash.com/photo-1584555613497-9ecf9dd06f68?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1584555613497-9ecf9dd06f68.jpg",
     isOwnBrand: false,
     isPromo: true,
     oldPrice: 11.99,
@@ -546,7 +546,7 @@ export const products: Product[] = [
     unit: "opak.",
     weight: "20 szt.",
     image:
-      "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1611284446314-60a58ac0deb9.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Wytrzymałe worki z taśmą ściągającą.",
@@ -561,7 +561,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "500 g",
     image:
-      "https://images.unsplash.com/photo-1551462147-ff29053bfc14?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1551462147-ff29053bfc14.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Makaron durum. Czas gotowania 9–11 minut.",
@@ -576,7 +576,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 kg",
     image:
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1586201375761-83865001e31c.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Sypki ryż długoziarnisty do dań obiadowych.",
@@ -591,7 +591,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 kg",
     image:
-      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1574323347407-f5e1ad6d020b.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Uniwersalna mąka do ciast, pierogów i panierki.",
@@ -606,7 +606,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "1 kg",
     image:
-      "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1587049352846-4a222e784d38.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Cukier kryształ do wypieków i codziennego użytku.",
@@ -621,7 +621,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "450 g",
     image:
-      "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1464965911861-746a04b4bca6.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Mrożony groszek, marchewka i kukurydza. Gotowe w 8 minut.",
@@ -636,7 +636,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "500 ml",
     image:
-      "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1497034825429-c343d7c6a68f.jpg",
     isOwnBrand: false,
     isPromo: false,
     description: "Kremowe lody śmietankowe. Trzymaj w zamrażarce −18°C.",
@@ -651,7 +651,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "100 g",
     image:
-      "https://images.unsplash.com/photo-1511381939415-e44015466831?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1511381939415-e44015466831.jpg",
     isOwnBrand: false,
     isPromo: true,
     oldPrice: 5.99,
@@ -667,7 +667,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "200 g",
     image:
-      "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1558961363-fa8fdf82db35.jpg",
     isOwnBrand: true,
     isPromo: false,
     description: "Kruche herbatniki maślane do herbaty. Marka własna PSS.",
@@ -682,7 +682,7 @@ export const products: Product[] = [
     unit: "szt.",
     weight: "200 g",
     image:
-      "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1621939514649-280e2ee25f60.jpg",
     isOwnBrand: false,
     isPromo: true,
     oldPrice: 4.29,

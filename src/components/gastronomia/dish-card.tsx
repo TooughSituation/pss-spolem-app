@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { SafeImage } from "@/components/media/safe-image";
 import { AppBadge } from "@/components/design-system/app-badge";
 import { AppButton } from "@/components/design-system/app-button";
 import { AppCard } from "@/components/design-system/app-card";
@@ -25,7 +25,7 @@ export function DishCard({
         onClick={() => router.push(`/danie/${dish.id}`)}
       >
         <div className="relative size-[88px] shrink-0 overflow-hidden rounded-lg bg-accent-light">
-          <Image
+          <SafeImage
             src={dish.image}
             alt={dish.name}
             fill

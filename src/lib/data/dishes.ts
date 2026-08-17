@@ -24,7 +24,7 @@ export const dishes: Dish[] = [
     description: "Trzy jajka, masło PSS i świeża kajzerka.",
     price: 14.5,
     image:
-      "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1525351484163-7529414344d8.jpg",
     categoryId: "sniadania",
     isDaily: false,
     addons: rozmiar,
@@ -35,7 +35,7 @@ export const dishes: Dish[] = [
     description: "Puszysty omlet, szynka konserwowa PSS i szczypiorek.",
     price: 16.9,
     image:
-      "https://images.unsplash.com/photo-1612240498936-65f5101365d2?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1612240498936-65f5101365d2.jpg",
     categoryId: "sniadania",
     isDaily: false,
     addons: dodatki,
@@ -46,7 +46,7 @@ export const dishes: Dish[] = [
     description: "Płatki, mleko 3,2% i jabłka Ligol.",
     price: 11.5,
     image:
-      "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1517673132405-a56a62b18caf.jpg",
     categoryId: "sniadania",
     isDaily: false,
     addons: [],
@@ -57,7 +57,7 @@ export const dishes: Dish[] = [
     description: "Z jajkiem, kiełbasą śląską i pieczywem.",
     price: 16.9,
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1547592180-85f173990554.jpg",
     categoryId: "zupy",
     isDaily: true,
     addons: rozmiar.concat(dodatki.filter((a) => a.id === "chleb")),
@@ -68,7 +68,7 @@ export const dishes: Dish[] = [
     description: "Klarowny barszcz i uszka z grzybami.",
     price: 15.5,
     image:
-      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1604908176997-125f25cc6f3d.jpg",
     categoryId: "zupy",
     isDaily: true,
     addons: rozmiar,
@@ -79,7 +79,7 @@ export const dishes: Dish[] = [
     description: "Na wywarze, z ryżem i śmietaną 18%.",
     price: 12.9,
     image:
-      "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1547592166-23ac45744acd.jpg",
     categoryId: "zupy",
     isDaily: false,
     addons: rozmiar,
@@ -90,7 +90,7 @@ export const dishes: Dish[] = [
     description: "Klasyczna, z ziemniakami i koperkiem.",
     price: 13.5,
     image:
-      "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1476718406336-bb5a9690ee2a.jpg",
     categoryId: "zupy",
     isDaily: false,
     addons: [],
@@ -101,7 +101,7 @@ export const dishes: Dish[] = [
     description: "Kotlet, ziemniaki z koperkiem i surówka.",
     price: 28.9,
     image:
-      "https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1432139555190-58524dae6a55.jpg",
     categoryId: "dania-glowne",
     isDaily: true,
     addons: [...sosy, ...dodatki, ...rozmiar],
@@ -112,7 +112,7 @@ export const dishes: Dish[] = [
     description: "Dwa kotlety, puree i buraczki.",
     price: 24.5,
     image:
-      "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1529042410759-befb1204b468.jpg",
     categoryId: "dania-glowne",
     isDaily: true,
     addons: [...sosy, ...dodatki],
@@ -123,7 +123,7 @@ export const dishes: Dish[] = [
     description: "Kurczak z masłem, frytki i surówka.",
     price: 29.9,
     image:
-      "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1604908177453-7462950a6a3b.jpg",
     categoryId: "dania-glowne",
     isDaily: false,
     addons: [...sosy, ...dodatki],
@@ -134,7 +134,7 @@ export const dishes: Dish[] = [
     description: "Duszona wołowina, kasza gryczana PSS.",
     price: 27.5,
     image:
-      "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1534939561126-855b8675edd7.jpg",
     categoryId: "dania-glowne",
     isDaily: false,
     addons: rozmiar,
@@ -145,7 +145,7 @@ export const dishes: Dish[] = [
     description: "Filet, ziemniaki i mizeria.",
     price: 26.9,
     image:
-      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1519708227418-c8fd9a32b7a2.jpg",
     categoryId: "dania-glowne",
     isDaily: false,
     addons: sosy,
@@ -156,7 +156,7 @@ export const dishes: Dish[] = [
     description: "Domowy twaróg, śmietana i cukier.",
     price: 14.5,
     image:
-      "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1567620905732-2d1ec7ab7445.jpg",
     categoryId: "nalesniki",
     isDaily: true,
     addons: rozmiar,
@@ -167,7 +167,7 @@ export const dishes: Dish[] = [
     description: "Szpinak, ser i czosnek.",
     price: 16.9,
     image:
-      "https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1519676867240-f03562e64548.jpg",
     categoryId: "nalesniki",
     isDaily: false,
     addons: sosy,
@@ -178,7 +178,7 @@ export const dishes: Dish[] = [
     description: "Dżem truskawkowy PSS.",
     price: 12.9,
     image:
-      "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1506084868230-bb9d95c24759.jpg",
     categoryId: "nalesniki",
     isDaily: false,
     addons: [],
@@ -189,7 +189,7 @@ export const dishes: Dish[] = [
     description: "Zupa + danie główne + kompot.",
     price: 32.0,
     image:
-      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1546069901-ba9599a7e63c.jpg",
     categoryId: "zestawy",
     isDaily: true,
     addons: rozmiar,
@@ -200,7 +200,7 @@ export const dishes: Dish[] = [
     description: "Żurek, schabowy, kompot.",
     price: 36.5,
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1504674900247-0877df9cc836.jpg",
     categoryId: "zestawy",
     isDaily: false,
     addons: dodatki,
@@ -211,7 +211,7 @@ export const dishes: Dish[] = [
     description: "Gotowane, masło PSS.",
     price: 7.5,
     image:
-      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1518977676601-b53f82aba655.jpg",
     categoryId: "dodatki",
     isDaily: false,
     addons: [],
@@ -222,7 +222,7 @@ export const dishes: Dish[] = [
     description: "Chrupiące, ze sólą.",
     price: 8.5,
     image:
-      "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1573080496219-bb080dd4f877.jpg",
     categoryId: "dodatki",
     isDaily: false,
     addons: sosy,
@@ -233,7 +233,7 @@ export const dishes: Dish[] = [
     description: "Kapusta, marchew, majonez.",
     price: 6.5,
     image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1512621776951-a57141f2eefd.jpg",
     categoryId: "dodatki",
     isDaily: false,
     addons: [],
@@ -244,7 +244,7 @@ export const dishes: Dish[] = [
     description: "Na ciepło, ze śmietaną.",
     price: 9.9,
     image:
-      "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1568571780765-9276ac8b75a2.jpg",
     categoryId: "desery",
     isDaily: false,
     addons: [],
@@ -255,7 +255,7 @@ export const dishes: Dish[] = [
     description: "Klasyczny, z kruszonką.",
     price: 10.5,
     image:
-      "https://images.unsplash.com/photo-1533134486753-c833f0ed4866?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1533134486753-c833f0ed4866.jpg",
     categoryId: "desery",
     isDaily: false,
     addons: [],
@@ -266,7 +266,7 @@ export const dishes: Dish[] = [
     description: "Dzbanek 0,3 l, jabłko i śliwka.",
     price: 4.5,
     image:
-      "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1622597467836-f3285f2131b8.jpg",
     categoryId: "napoje-gastro",
     isDaily: false,
     addons: [],
@@ -277,7 +277,7 @@ export const dishes: Dish[] = [
     description: "Czarna, szklanka 0,2 l.",
     price: 3.5,
     image:
-      "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1556679343-c7306c1976bc.jpg",
     categoryId: "napoje-gastro",
     isDaily: false,
     addons: [],

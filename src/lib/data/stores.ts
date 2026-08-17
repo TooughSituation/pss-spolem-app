@@ -37,7 +37,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: true,
     image:
-      "https://images.unsplash.com/photo-1534723452862-4c874018d66d?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1534723452862-4c874018d66d.jpg",
   },
   {
     id: "sloneczny",
@@ -54,7 +54,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: true,
     image:
-      "https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1578916171728-46686eac8d58.jpg",
   },
   {
     id: "antoniuk",
@@ -71,7 +71,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: false,
     image:
-      "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1542838132-92c53300491e.jpg",
   },
   {
     id: "piasta",
@@ -91,7 +91,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: false,
     image:
-      "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1604719312566-8912e9227c6a.jpg",
   },
   {
     id: "bacieczki",
@@ -108,7 +108,7 @@ export const stores: Store[] = [
     hasClickCollect: false,
     hasDelivery: true,
     image:
-      "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1488459716781-31db52582fe9.jpg",
   },
   {
     id: "bojary",
@@ -125,7 +125,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: false,
     image:
-      "https://images.unsplash.com/photo-1601599561213-832382fd07ba?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1601599561213-832382fd07ba.jpg",
   },
   {
     id: "bar-lipowa",
@@ -142,7 +142,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: false,
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1547592180-85f173990554.jpg",
   },
   {
     id: "bar-rynek",
@@ -162,7 +162,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: false,
     image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1555396273-367ea4eb4db5.jpg",
   },
   {
     id: "bar-dziesieciny",
@@ -179,7 +179,7 @@ export const stores: Store[] = [
     hasClickCollect: false,
     hasDelivery: false,
     image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1414235077428-338989a2e8c0.jpg",
   },
   {
     id: "bar-skorupy",
@@ -199,7 +199,7 @@ export const stores: Store[] = [
     hasClickCollect: true,
     hasDelivery: false,
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1504674900247-0877df9cc836.jpg",
   },
 ];
 

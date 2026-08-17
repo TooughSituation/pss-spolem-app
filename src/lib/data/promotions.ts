@@ -9,7 +9,7 @@ export const promotions: Promotion[] = [
     discountPercent: 22,
     validUntil: "2026-08-20",
     image:
-      "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1589985270826-4b7bb135bc9d.jpg",
     tag: "Hit tygodnia",
   },
   {
@@ -20,7 +20,7 @@ export const promotions: Promotion[] = [
     discountPercent: 15,
     validUntil: "2026-08-20",
     image:
-      "https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1604503468506-a8da13d82791.jpg",
     tag: "Świeże",
   },
   {
@@ -31,7 +31,7 @@ export const promotions: Promotion[] = [
     discountPercent: 15,
     validUntil: "2026-08-20",
     image:
-      "https://images.unsplash.com/photo-1524438418049-ab2acb7aa48f?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1524438418049-ab2acb7aa48f.jpg",
     tag: "Marka własna",
   },
   {
@@ -42,7 +42,7 @@ export const promotions: Promotion[] = [
     discountPercent: 21,
     validUntil: "2026-08-20",
     image:
-      "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1600271886742-f049cd451bba.jpg",
     tag: "Napoje",
   },
   {
@@ -53,7 +53,7 @@ export const promotions: Promotion[] = [
     discountPercent: 18,
     validUntil: "2026-08-18",
     image:
-      "https://images.unsplash.com/photo-1555507036-ab794f27d2e9?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1555507036-ab794f27d2e9.jpg",
     tag: "Piekarnia",
   },
   {
@@ -64,7 +64,7 @@ export const promotions: Promotion[] = [
     discountPercent: 17,
     validUntil: "2026-08-24",
     image:
-      "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?auto=format&fit=crop&w=800&q=80",
+      "/images/catalog/1610557892470-55d9e80c0bce.jpg",
     tag: "Dom",
   },
 ];

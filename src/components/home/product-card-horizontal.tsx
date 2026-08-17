@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { SafeImage } from "@/components/media/safe-image";
 import { AppBadge } from "@/components/design-system/app-badge";
 import { AppCard } from "@/components/design-system/app-card";
 import { AddToListButton } from "@/components/list/add-to-list-button";
@@ -18,7 +18,7 @@ export function ProductCardHorizontal({ product }: { product: Product }) {
     >
       <AppCard padding="none" interactive className="h-full overflow-hidden">
         <div className="relative aspect-[4/3] bg-accent-light">
-          <Image
+          <SafeImage
             src={product.image}
             alt={product.name}
             fill

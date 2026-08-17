@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { SafeImage } from "@/components/media/safe-image";
 import { Clock, MapPin, Navigation, Phone, UtensilsCrossed } from "lucide-react";
 import { AppBadge } from "@/components/design-system/app-badge";
 import { AppButton } from "@/components/design-system/app-button";
@@ -41,7 +41,7 @@ export function StoreDetails({ store }: { store: Store }) {
     <div className="pb-6">
       <ScreenHeader title={store.district} back backHref="/sklepy" />
       <div className="relative mx-4 mt-3 h-40 overflow-hidden rounded-xl">
-        <Image
+        <SafeImage
           src={store.image}
           alt={store.name}
           fill

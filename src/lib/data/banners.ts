@@ -20,7 +20,7 @@ export const homeBanners: HomeBanner[] = [
   {
     id: "pieczywo",
     image:
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1509440159596-0249088772ff.jpg",
     title: "Świeże z piekarni",
     subtitle: "Codzienny wypiek PSS Społem",
     link: "/oferta?kategoria=pieczywo",
@@ -29,7 +29,7 @@ export const homeBanners: HomeBanner[] = [
   {
     id: "gastronomia",
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80",
+      "/images/catalog/1547592180-85f173990554.jpg",
     title: "Stołówka Społem",
     subtitle: "Danie dnia już wkrótce w aplikacji",
     link: "/gastronomia",

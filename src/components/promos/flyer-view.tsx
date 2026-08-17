@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { SafeImage } from "@/components/media/safe-image";
 import { useRef, useState } from "react";
 import { ChevronLeft, Plus } from "lucide-react";
 import { toast } from "sonner";
@@ -61,7 +61,7 @@ export function FlyerView() {
           >
             {p.id === "cover" ? (
               <div className="relative flex min-h-[70vh] flex-col justify-end overflow-hidden rounded-[28px]">
-                <Image
+                <SafeImage
                   src="/images/flyer.jpg"
                   alt="Okładka gazetki"
                   fill
@@ -106,7 +106,7 @@ export function FlyerView() {
                         className="overflow-hidden rounded-2xl bg-white text-foreground"
                       >
                         <div className="relative h-28">
-                          <Image
+                          <SafeImage
                             src={product.image}
                             alt={product.name}
                             fill

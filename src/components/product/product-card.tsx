@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { SafeImage } from "@/components/media/safe-image";
 import { Check, Plus } from "lucide-react";
 import { toast } from "sonner";
 import type { Product } from "@/lib/types";
@@ -37,7 +37,7 @@ export function ProductCard({
         className="flex gap-3 rounded-2xl border bg-card p-2.5 shadow-sm transition hover:shadow-md"
       >
         <div className="relative size-[76px] shrink-0 overflow-hidden rounded-xl bg-muted">
-          <Image
+          <SafeImage
             src={product.image}
             alt={product.name}
             fill
@@ -76,7 +76,7 @@ export function ProductCard({
       className="group flex flex-col overflow-hidden rounded-2xl border bg-card shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
       <div className="relative aspect-[4/3] bg-muted">
-        <Image
+        <SafeImage
           src={product.image}
           alt={product.name}
           fill

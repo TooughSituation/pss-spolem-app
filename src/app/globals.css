@@ -199,6 +199,12 @@
   background: var(--accent-light);
 }
 
+.leaflet-control-attribution,
+.leaflet-control-attribution a,
+.leaflet-attribution-flag {
+  display: none !important;
+}
+
 .leaflet-pane,
 .leaflet-top,
 .leaflet-bottom {

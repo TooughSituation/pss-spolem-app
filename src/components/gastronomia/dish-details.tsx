@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { toast } from "sonner";
+import { SafeImage } from "@/components/media/safe-image";
 import { AddonsSelector } from "@/components/gastronomia/addons-selector";
 import { CartSheet } from "@/components/gastronomia/cart-sheet";
 import { AppButton } from "@/components/design-system/app-button";
@@ -34,7 +34,7 @@ export function DishDetails({ dish }: { dish: Dish }) {
     <div className="pb-28">
       <ScreenHeader title={dish.name} back backHref="/gastronomia" />
       <div className="relative mx-4 mt-3 h-44 overflow-hidden rounded-xl bg-accent-light">
-        <Image
+        <SafeImage
           src={dish.image}
           alt={dish.name}
           fill

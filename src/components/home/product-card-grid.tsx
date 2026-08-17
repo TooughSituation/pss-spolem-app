@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { SafeImage } from "@/components/media/safe-image";
 import { AppBadge } from "@/components/design-system/app-badge";
 import { AppCard } from "@/components/design-system/app-card";
 import { ProductPrice } from "@/components/home/product-card-horizontal";
@@ -19,7 +19,7 @@ export function ProductCardGrid({ product }: { product: Product }) {
         className="flex h-full flex-col overflow-hidden"
       >
         <div className="relative aspect-[4/3] bg-accent-light">
-          <Image
+          <SafeImage
             src={product.image}
             alt={product.name}
             fill

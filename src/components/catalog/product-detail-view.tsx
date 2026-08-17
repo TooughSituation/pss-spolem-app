@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { ShoppingBasket, ShoppingCart } from "lucide-react";
+import { SafeImage } from "@/components/media/safe-image";
 import { toast } from "sonner";
 import type { Product } from "@/lib/types";
 import { getCategory } from "@/lib/data/categories";
@@ -29,7 +29,7 @@ export function ProductDetailView({ product }: { product: Product }) {
     <div>
       <ScreenHeader title={product.name} back />
       <div className="relative mx-4 mt-3 aspect-[4/3] overflow-hidden rounded-3xl bg-muted">
-        <Image
+        <SafeImage
           src={product.image}
           alt={product.name}
           fill
