@@ -24,6 +24,7 @@ export type Product = {
   oldPrice?: number;
   promoPrice?: number;
   badge?: string;
+  groupIds?: string[];
   description: string;
   origin?: string;
   barcode: string;
@@ -60,6 +61,13 @@ export type Store = {
   hasClickCollect: boolean;
   hasDelivery: boolean;
   image: string;
+};
+
+export type PromotionGroup = {
+  id: string;
+  name: string;
+  order: number;
+  isActive: boolean;
 };
 
 export type Promotion = {

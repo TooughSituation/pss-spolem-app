@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty v2 + **Home v2** — DS #0055A4, mock Auth, Top Bar, 5 zakładek, profil, nowy ekran Home (punkty+QR, carousel, dynamiczne sekcje, pull-to-refresh). Nadal sam frontend + Zustand/localStorage.
+> **Status:** fundamenty v2 + Home v2 + **Promocje v2**. Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -79,7 +79,7 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 | Login | `/login` | ✅ mock SMS |
 | OTP | `/otp` | ✅ tylko `123456` |
 | Home | `/` | ✅ greeting, karta punktów + QR 160px, carousel, 5 sekcji z mocka, pull-to-refresh |
-| Promocje | `/promocje` | ✅ stare karty, nowa kolorystyka |
+| Promocje | `/promocje` | ✅ chipsy grup, siatka 2 kol., search, filtry, % rabatu |
 | Gazetka | `/promocje/gazetka` | ✅ fullscreen |
 | Gastronomia | `/gastronomia` | 🔶 placeholder |
 | Sklepy | `/sklepy` | ✅ mapa + lista |
@@ -106,7 +106,7 @@ src/lib/
   theme/                      # colors.ts, typography.ts
   auth/routes.ts              # public / auth / fullscreen
   stores/                     # auth, user, cart, shopping-list
-  data/                       # banners, home-sections, products, stores, promotions, user
+  data/                       # banners, home-sections, promotion-groups, products, stores, promotions, user
   constants.ts types.ts
 public/                       # manifest, sw.js, icons/, images/
 ```
@@ -126,15 +126,17 @@ Build lokalny (`npm run build`) przechodzi.
 
 ## Co jest gotowe / co dalej
 
-**Zrobione:** DS niebieski, Top Bar, 5 tabów, mock OTP, profil, **Home v2**.
+**Zrobione:** DS niebieski, Top Bar, 5 tabów, mock OTP, profil, Home v2, **Promocje v2**.
 
-**Home (`/`):** `src/components/home/` — HomeHeader, PointsCard, BannerCarousel, HomeSection, ProductCardHorizontal/Grid, CategoryShortcuts, PullToRefresh. Dane: `src/lib/data/banners.ts` + `home-sections.ts`. Kolejność sekcji: skróty → Hity tygodnia (horizontal) → banner → Produkcja własna (grid) → Wyprzedaż (horizontal).
+**Home (`/`):** `src/components/home/` — greeting, PointsCard+QR, carousel, dynamiczne sekcje, pull-to-refresh.
 
-**Następny krok (rekomendacja):** Promocje (`/promocje`) albo rozbudowa karty punktów / `/lojalnosc`.
+**Promocje (`/promocje`):** `src/components/promos/` — PromotionChips, SearchBar, PromotionFilters, PromotionProductCard. Grupy z `src/lib/data/promotion-groups.ts` (Hity, Marka własna, Wyprzedaż, Pieczywo, Nabiał, Chemia). Klik karty → `/oferta/[id]` (opis + „Dodaj do listy zakupów”). Gazetka nadal pod `/promocje/gazetka`.
+
+**Następny krok (rekomendacja):** Sklepy/Mapa albo rozbudowa lojalności / karty punktów.
 
 Dalsze etapy (później):
 
-- [ ] Przebudowa Promocji / lojalności
+- [ ] Sklepy / mapa albo lojalność
 - [ ] Gastronomia (menu, danie, zamówienie)
 - [ ] Prawdziwe API + SMS
 - [ ] Integracja „Społem znaczy razem”
@@ -151,7 +153,7 @@ Dalsze etapy (później):
 5. **Design:** mobile-first, ramka telefonu, paleta `#0055A4`, Inter, light only
 6. **Deploy:** `git push origin main` (Vercel podpięty)
 7. **Język:** polski
-8. **Kolejny krok:** Promocje albo rozbudowa karty punktów / lojalności
+8. **Kolejny krok:** Sklepy/Mapa albo rozbudowa lojalności / karty punktów
 
 ### Wklejka kontekstowa (krótka)
 
@@ -169,15 +171,15 @@ Auth mock: /login /otp · kod 123456 · persist pss-auth
 Top Bar stały na Main. Profil: dane + punkty + wylogowanie.
 
 Home v2: greeting, PointsCard+QR, BannerCarousel, dynamiczne sekcje
-        (shortcuts, horizontal, banner, grid), pull-to-refresh
-        dane: src/lib/data/banners.ts + home-sections.ts
+Promocje v2: chipsy grup, search, filtry, siatka 2 kol., % rabatu
+        dane: banners.ts, home-sections.ts, promotion-groups.ts
 
 Ekrany: /login /otp / /promocje /gastronomia /sklepy /profil /ustawienia
         /oferta /oferta/[id] /promocje/gazetka /lista /lojalnosc
         /skanuj /zamow + placeholdery /produkt /danie /checkout /zamowienie
 
 Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
-Brak backendu. KOLEJNY KROK: Promocje albo rozbudowa lojalności / karty punktów.
+Brak backendu. KOLEJNY KROK: Sklepy/Mapa albo rozbudowa lojalności.
 ```
 
 ## Kontekst developera

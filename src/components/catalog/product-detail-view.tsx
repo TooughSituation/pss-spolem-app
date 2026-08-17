@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import type { Product } from "@/lib/types";
 import { getCategory } from "@/lib/data/categories";
 import { products } from "@/lib/data/products";
+import { discountPercent, productPricing } from "@/lib/data/products";
 import { formatPrice } from "@/lib/format";
 import { useShoppingList } from "@/lib/stores/shopping-list";
 import { useCart } from "@/lib/stores/cart";
@@ -21,10 +22,12 @@ export function ProductDetailView({ product }: { product: Product }) {
     .filter((p) => p.category === product.category && p.id !== product.id)
     .slice(0, 4);
   const category = getCategory(product.category);
+  const { price, promoPrice } = productPricing(product);
+  const discount = discountPercent(product);
 
   return (
     <div>
-      <ScreenHeader title={product.name} back backHref="/oferta" />
+      <ScreenHeader title={product.name} back />
       <div className="relative mx-4 mt-3 aspect-[4/3] overflow-hidden rounded-3xl bg-muted">
         <Image
           src={product.image}
@@ -38,7 +41,16 @@ export function ProductDetailView({ product }: { product: Product }) {
           {product.isOwnBrand && (
             <Badge className="bg-primary">Marka własna PSS</Badge>
           )}
-          {product.isPromo && <Badge className="bg-error text-white">Promocja</Badge>}
+          {product.isPromo && (
+            <Badge className="bg-error text-white">
+              {discount != null ? `−${discount}%` : "Promocja"}
+            </Badge>
+          )}
+          {product.badge ? (
+            <Badge className="bg-primary text-primary-foreground">
+              {product.badge}
+            </Badge>
+          ) : null}
         </div>
       </div>
 
@@ -51,13 +63,13 @@ export function ProductDetailView({ product }: { product: Product }) {
 
         <div className="mt-3 flex items-end gap-2">
           <p className="text-3xl font-black tabular-nums text-primary">
-            {formatPrice(product.price)}
+            {formatPrice(promoPrice ?? price)}
           </p>
-          {product.oldPrice && (
+          {promoPrice != null ? (
             <p className="mb-1 text-sm text-muted-foreground line-through">
-              {formatPrice(product.oldPrice)}
+              {formatPrice(price)}
             </p>
-          )}
+          ) : null}
           <p className="mb-1 text-sm text-muted-foreground">/ {product.unit}</p>
         </div>
 
@@ -74,7 +86,7 @@ export function ProductDetailView({ product }: { product: Product }) {
           Kod kreskowy: {product.barcode}
         </p>
 
-        <div className="mt-5 grid grid-cols-2 gap-2">
+        <div className="mt-5 flex flex-col gap-2">
           <Button
             className="h-11 rounded-2xl"
             onClick={() => {
@@ -83,7 +95,7 @@ export function ProductDetailView({ product }: { product: Product }) {
             }}
           >
             <ShoppingBasket className="size-4" />
-            Do listy
+            Dodaj do listy zakupów
           </Button>
           <Button
             variant="outline"

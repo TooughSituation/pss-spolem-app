@@ -30,7 +30,9 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: true,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 4.79,
+    badge: "Nowość",
     description: "Świeże kajzerki wypiekane każdej nocy. Idealne do śniadania.",
     origin: "Piekarnia PSS",
     barcode: "5901234000028",
@@ -112,7 +114,8 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: true,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 3.49,
     description: "Gęsty jogurt naturalny bez dodatków. Źródło białka i kultur żywych.",
     barcode: "5901234000073",
   },
@@ -143,7 +146,9 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 14.99,
+    badge: "Nowość",
     description: "Jaja klasy L od kur z wolnego wybiegu. Świeże dostawy 3× w tygodniu.",
     origin: "Mazowsze",
     barcode: "5901234000097",
@@ -381,7 +386,8 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: true,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 7.49,
     description: "Gęsty dżem z polskich truskawek. Wysoka zawartość owoców.",
     barcode: "5901234000240",
   },
@@ -427,7 +433,9 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 2.49,
+    badge: "Ostatnie sztuki",
     description: "Niegazowana woda źródlana. Niska mineralizacja.",
     barcode: "5901234000271",
   },
@@ -459,7 +467,8 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 12.49,
     description: "Klasyczna czarna herbata w torebkach. Mocny napar.",
     barcode: "5901234000295",
   },
@@ -489,7 +498,8 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1585421514738-01798e348b17?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 8.49,
     description: "Skuteczny płyn do ręcznego mycia naczyń. Zapach cytryny.",
     barcode: "5901234000318",
   },
@@ -521,7 +531,9 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1584555613497-9ecf9dd06f68?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 11.99,
+    badge: "Ostatnie sztuki",
     description: "Miękki, trzywarstwowy papier toaletowy.",
     barcode: "5901234000332",
   },
@@ -641,7 +653,8 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1511381939415-e44015466831?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 5.99,
     description: "Klasyczna mleczna czekolada. Polska receptura.",
     barcode: "5901234000417",
   },
@@ -671,7 +684,8 @@ export const products: Product[] = [
     image:
       "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=800&q=80",
     isOwnBrand: false,
-    isPromo: false,
+    isPromo: true,
+    oldPrice: 4.29,
     description: "Chrupiące paluszki ze solą. Przekąska do filmu.",
     barcode: "5901234000431",
   },
@@ -710,4 +724,10 @@ export function productBadge(product: Product) {
   }
   if (product.isOwnBrand) return "Marka PSS";
   return undefined;
+}
+
+export function discountPercent(product: Product) {
+  const { price, promoPrice } = productPricing(product);
+  if (promoPrice == null || price <= 0 || promoPrice >= price) return undefined;
+  return Math.round((1 - promoPrice / price) * 100);
 }
