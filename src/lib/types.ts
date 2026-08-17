@@ -135,6 +135,35 @@ export type Reward = {
   description: string;
 };
 
+export type LoyaltyTxType = "earn" | "spend";
+
+export type LoyaltyTransaction = {
+  id: string;
+  date: string;
+  description: string;
+  points: number;
+  type: LoyaltyTxType;
+};
+
+export type LoyaltyReward = {
+  id: string;
+  title: string;
+  description: string;
+  pointsCost: number;
+};
+
+export type VoucherStatus = "aktywny" | "wykorzystany";
+
+export type LoyaltyVoucher = {
+  id: string;
+  rewardId: string;
+  title: string;
+  pointsCost: number;
+  code: string;
+  status: VoucherStatus;
+  expiresAt: string;
+};
+
 export type HomeBanner = {
   id: string;
   image: string;

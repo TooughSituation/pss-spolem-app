@@ -2,7 +2,7 @@
 
 > Ostatnia aktualizacja: **17.08.2026**
 > Kontekst dla GrokWeb / Grok Build
-> **Status:** fundamenty + Home + Promocje + Sklepy + **Gastronomia v1** (menu, koszyk, checkout mock). Nadal sam frontend + Zustand/localStorage.
+> **Status:** fundamenty + Home + Promocje + Sklepy + Gastronomia + **Lojalność A1** (QR, historia, e-bony). Nadal sam frontend + Zustand/localStorage.
 
 To **nie** jest oficjalna aplikacja KZRSS / PSS Społem. Dane, sklepy i ceny są przykładowe.
 
@@ -85,7 +85,7 @@ AppTopBar (logo + dzwonek) na wszystkich ekranach Main po zalogowaniu.
 | Sklepy | `/sklepy` | ✅ Leaflet/OSM, 10 placówek Białystok, filtry, lista, szczegóły |
 | Profil | `/profil` | ✅ dane, punkty, edycja, wylogowanie |
 | Ustawienia | `/ustawienia` | ✅ prosta edycja imienia |
-| Lojalność | `/lojalnosc` | ✅ karta + QR, punkty z AuthStore |
+| Lojalność | `/lojalnosc` | ✅ karta + QR 160px, historia, wymiana, e-bony |
 | Oferta / produkt stary | `/oferta`, `/oferta/[id]` | ✅ zostaje |
 | Lista | `/lista` | ✅ istnieje, **nie ma w tabach** |
 | Skaner / zamów | `/skanuj`, `/zamow` | ✅ |
@@ -114,7 +114,7 @@ src/lib/
 public/                       # manifest, sw.js, icons/, images/
 ```
 
-Klucze persist: `pss-auth`, `pss-user`, `pss-shopping-list`, `pss-cart` (sklep), `pss-gastro-cart` (stołówka).
+Klucze persist: `pss-auth` (punkty + karta), `pss-loyalty` (transakcje + e-bony), `pss-user`, `pss-shopping-list`, `pss-cart`, `pss-gastro-cart`.
 
 ## Deploy
 
@@ -129,15 +129,15 @@ Build lokalny (`npm run build`) przechodzi.
 
 ## Co jest gotowe / co dalej
 
-**Zrobione:** DS, Auth, Home, Promocje, Sklepy, **Gastronomia**.
+**Zrobione:** DS, Auth, Home, Promocje, Sklepy, Gastronomia, **Lojalność A1**.
 
-**Gastronomia:** 8 kategorii, 24 dania (6 „danie dnia”). Koszyk `pss-gastro-cart` (osobny od koszyka sklepu). Checkout lokalny: adresy + slot + BLIK/karta/przy odbiorze (bez prawdziwej płatności). Status `/zamowienie/[id]` liczony z czasu (mock). Badge na zakładce Gastronomia.
+**Lojalność (`/lojalnosc`):** punkty i numer karty z `pss-auth` (ten sam stan co Home). Historia + e-bony w `pss-loyalty`. 8 nagród, 12 transakcji seed, 3 e-bony startowe. Wymiana odejmuje punkty i dodaje kod.
 
-**Następny krok (rekomendacja):** Lojalność / e-bony.
+**Następny krok (Etap A2):** pełny Profil.
 
 Dalsze etapy (później):
 
-- [ ] Lojalność / e-bony
+- [ ] Profil A2
 - [ ] Prawdziwe płatności / status realtime
 - [ ] Prawdziwe API + SMS
 - [ ] Integracja „Społem znaczy razem”
@@ -154,7 +154,7 @@ Dalsze etapy (później):
 5. **Design:** mobile-first, ramka telefonu, paleta `#0055A4`, Inter, light only
 6. **Deploy:** `git push origin main` (Vercel podpięty)
 7. **Język:** polski
-8. **Kolejny krok:** Lojalność / e-bony
+8. **Kolejny krok:** Profil A2
 
 ### Wklejka kontekstowa (krótka)
 
@@ -183,7 +183,8 @@ Ekrany: /login /otp / /promocje /gastronomia /danie/[id] /checkout /zamowienie/[
 Dane mock: src/lib/data/*  · store: src/lib/stores/auth.ts + user/cart/list
 Sklepy v2: Leaflet/OSM, 10 placówek Białystok
 Gastronomia: 8 kat. / 24 dania, pss-gastro-cart, /danie /checkout /zamowienie
-Brak backendu. KOLEJNY KROK: lojalność / e-bony.
+Lojalność A1: pss-auth.pointsBalance + pss-loyalty (8 nagród, 12 tx, e-bony)
+Brak backendu. KOLEJNY KROK: Profil A2.
 ```
 
 ## Kontekst developera
